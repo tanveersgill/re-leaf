@@ -11,7 +11,7 @@ export default function Navbar() {
         <div className="brand">
           <div className="container">
             <img src={logo} alt="" />
-            Travelo
+            Re-Leaf
           </div>
           <div className="toggle">
             {navbarState ? (
