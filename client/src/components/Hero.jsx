@@ -9,11 +9,10 @@ export default function Hero() {
       </div>
       <div className="content">
         <div className="title">
-          <h1>TRAVEL TO EXPLORE</h1>
+          <h1>TRAVEL SUSTAINABLY</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
-            natus, enim ipsam magnam odit deserunt itaque? Minima earum velit
-            tenetur!
+            Re-Leaf takes travelling to a new level. Plan trips in a 
+            way that is both cost-effective and eco-friendly.  
           </p>
         </div>
         <div className="search">
