@@ -40,6 +40,7 @@ const formatResponse = async (rawRes) => {
       address: place.vicinity,
       rating: place.rating,
       categories: place.types,
+      location: place.geometry.location,
     };
   }
 
