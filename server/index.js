@@ -6,13 +6,9 @@ import User from './database/models/user.js';
 import Trip from './database/models/trip.js'
 
 import attractions from './routes/attractions.js';
-<<<<<<< HEAD
-=======
 import hotels from './routes/hotels.js';
 import { MONGODB_URI } from './constants.js';
->>>>>>> 072ec5ce427c92d8b21d9dbe27398bc95700c779
 
-const MONGODB_URI = process.env.MONGO_URI
 dotenv.config();
 
 const router = express.Router();

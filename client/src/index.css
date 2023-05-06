@@ -26,3 +26,7 @@ body {
 ::-webkit-scrollbar-thumb {
   background-color: #29664c;
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

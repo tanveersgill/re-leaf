@@ -194,7 +194,7 @@ const Activities = () => {
           </p>
         </SavingsSection>
         <ButtonContainer>
-          <SidebarButton onClick={() => navigate("/plan/accomodation")}>
+          <SidebarButton onClick={() => navigate("/plan/accommodation")}>
             Back
           </SidebarButton>
           <SidebarButton onClick={() => navigate("/plan/activities")}>

@@ -1,5 +1,5 @@
-import express from 'express'
+import express from "express";
 
-const accomodations = express.Router();
+const accommodations = express.Router();
 
-export default accomodations;
+export default accommodations;

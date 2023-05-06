@@ -7,9 +7,9 @@ import ScrollToTop from "./components/ScrollToTop";
 import Services from "./components/Services";
 import Testimonials from "./components/Testimonials";
 import scrollreveal from "scrollreveal";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Flight from "./components/Flight";
-import Accomodation from "./components/Accomodation";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Flight from "./pages/Flight";
+import Accommodation from "./pages/Accommodation";
 import Activities from "./components/Activities";
 import Plan from "./components/Plan";
 // import Summary from "./components/Summary";
@@ -56,7 +56,7 @@ export default function App() {
         ></Route>
         <Route path="/plan" element={<Plan />}>
           <Route index path="flight" element={<Flight />} />
-          <Route path="accomodation" element={<Accomodation />} />
+          <Route path="accommodation" element={<Accommodation />} />
           <Route path="activities" element={<Activities />} />
           {/* <Route path="summary" element={<Summary />} /> */}
         </Route>

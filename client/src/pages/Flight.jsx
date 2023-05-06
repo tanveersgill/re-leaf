@@ -193,7 +193,7 @@ const Flight = () => {
         </SavingsSection>
         <ButtonContainer>
           <SidebarButton onClick={() => navigate("/")}>Back</SidebarButton>
-          <SidebarButton onClick={() => navigate("/plan/accomodation")}>
+          <SidebarButton onClick={() => navigate("/plan/accommodation")}>
             Next
           </SidebarButton>
         </ButtonContainer>

@@ -15,13 +15,13 @@ export default function Hero() {
 
   const handleDestinationChange = (e) => {
     const { value } = e.target;
-    value.replaceAll(" ", "+");
+    value.replaceAll(" ", "%20");
     setTrip({ ...trip, destination: e.target.value });
   };
 
   const handleCheckInChange = (e) => {
     const { value } = e.target;
-    value.replaceAll(" ", "+");
+    value.replaceAll(" ", "%20");
     setTrip({ ...trip, startDate: e.target.value });
   };
 
