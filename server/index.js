@@ -1,7 +1,13 @@
 import express from 'express'
 import { auth } from 'express-oauth2-jwt-bearer'
+import dotenv from 'dotenv';
+import attractions from './routes/attractions.js';
 
-const app = express();
+dotenv.config();
+
+const router = express.Router();
+
+router.use('/attractions', attractions);
 
 const port = process.env.PORT || 3000;
 
@@ -12,11 +18,9 @@ const jwtCheck = auth({
 });
 
 // enforce on all endpoints
+const app = express();
 app.use(jwtCheck);
-
-app.get('/authorized', function (req, res) {
-    res.send('Secured Resource');
-});
+app.use(router);
 
 app.listen(port);
 
