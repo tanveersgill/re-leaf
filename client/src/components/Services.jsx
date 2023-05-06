@@ -59,7 +59,7 @@ const Section = styled.section`
     flex-direction: column;
     gap: 1rem;
     padding: 2rem;
-    background-color: aliceblue;
+    background-color: #e8f5e9;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     transition: 0.3s ease-in-out;
     &:hover {

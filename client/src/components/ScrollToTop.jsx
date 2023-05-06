@@ -27,6 +27,6 @@ const ToTop = styled.div`
     height: 1.5rem;
   }
   border-radius: 2rem;
-  background-color: #1900ff39;
+  background-color: #4caf5039;
   padding: 1rem;
 `;

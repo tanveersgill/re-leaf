@@ -92,16 +92,16 @@ const Nav = styled.nav`
     li {
       a {
         text-decoration: none;
-        color: #0077b6;
+        color: #2ca744;
         font-size: 1.2rem;
         transition: 0.1s ease-in-out;
         &:hover {
-          color: #023e8a;
+          color: #1c7a30;
         }
       }
       &:first-of-type {
         a {
-          color: #023e8a;
+          color: #1c7a30;
           font-weight: 900;
         }
       }
@@ -113,13 +113,13 @@ const Nav = styled.nav`
     border-radius: 1rem;
     border: none;
     color: white;
-    background-color: #48cae4;
+    background-color: #48a65c;
     font-size: 1.1rem;
     letter-spacing: 0.1rem;
     text-transform: uppercase;
     transition: 0.3s ease-in-out;
     &:hover {
-      background-color: #023e8a;
+      background-color: #1c7a30;
     }
   }
   @media screen and (min-width: 280px) and (max-width: 1080px) {
@@ -161,16 +161,16 @@ const ResponsiveNav = styled.div`
 
       a {
         text-decoration: none;
-        color: #0077b6;
+        color: #2ca744;
         font-size: 1.2rem;
         transition: 0.1s ease-in-out;
         &:hover {
-          color: #023e8a;
+          color: #1c7a30;
         }
       }
       &:first-of-type {
         a {
-          color: #023e8a;
+          color: #1c7a30;
           font-weight: 900;
         }
       }

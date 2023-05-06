@@ -38,7 +38,7 @@ export default function Footer() {
 const FooterContainer = styled.footer`
   display: flex;
   justify-content: space-evenly;
-  background-color: #d0d8ff;
+  background-color: #e0f2f1;
   border-radius: 0.5rem;
   padding: 2.5rem;
 
@@ -52,14 +52,14 @@ const FooterContainer = styled.footer`
         color: black;
         transition: 0.3s ease-in-out;
         &:hover {
-          color: #302ce9;
+          color: #388e3c;
         }
       }
       svg {
         font-size: 1.3rem;
         transition: 0.3s ease-in-out;
         &:hover {
-          color: #302ce9;
+          color: #388e3c;
         }
       }
     }

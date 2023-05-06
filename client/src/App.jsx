@@ -49,7 +49,6 @@ export default function App() {
         }>
         </Route>
         <Route path='/map' element={<GoogleMaps/>}>
-
         </Route>
       </Routes>
       
