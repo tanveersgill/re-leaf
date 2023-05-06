@@ -1,9 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import homeImage from "../assets/hero.png";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/plan/flight");
+  };
+
   return (
     <Section id="hero">
       <div className="background">
@@ -30,9 +36,7 @@ export default function Hero() {
             <label htmlFor="">Check-out</label>
             <input type="date" />
           </div>
-          <button>
-            <Link to="/plan/flight">Explore Now</Link>
-          </button>
+          <button onClick={handleClick}>Explore Now</button>
         </div>
       </div>
     </Section>
