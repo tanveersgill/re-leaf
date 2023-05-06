@@ -22,3 +22,8 @@ body {
 ::-webkit-scrollbar-thumb {
   background-color: #4539e6;
 }
+
+.map {
+  position: absolute;
+  right: 10px;
+}
