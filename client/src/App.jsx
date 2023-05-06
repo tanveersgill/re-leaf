@@ -7,7 +7,8 @@ import ScrollToTop from "./components/ScrollToTop";
 import Services from "./components/Services";
 import Testimonials from "./components/Testimonials";
 import scrollreveal from "scrollreveal";
-import {BrowserRouter, Routes, Route, Link} from 'react-router-dom' 
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import MapPage from "./components/MapPage";
 import GoogleMaps from "./components/GoogleMaps";
 
 export default function App() {
@@ -36,23 +37,22 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={
-          <div>
-            <ScrollToTop />
-            <Navbar />
-            <Hero />
-            <Services />
-            <Recommend />
-            <Testimonials />
-            <Footer />
-          </div>
-        }>
-        </Route>
-        <Route path='/map' element={<GoogleMaps/>}>
-        </Route>
+        <Route
+          path="/"
+          element={
+            <div>
+              <ScrollToTop />
+              <Navbar />
+              <Hero />
+              <Services />
+              <Recommend />
+              <Testimonials />
+              <Footer />
+            </div>
+          }
+        ></Route>
+        <Route path="/map" element={<GoogleMaps />}></Route>
       </Routes>
-      
     </BrowserRouter>
-    
   );
 }
