@@ -2,12 +2,14 @@ import express from 'express'
 import { auth } from 'express-oauth2-jwt-bearer'
 import dotenv from 'dotenv';
 import attractions from './routes/attractions.js';
+import flights from './routes/flights.js';
 
 dotenv.config();
 
 const router = express.Router();
 
 router.use('/attractions', attractions);
+router.use('/flights', flights);
 
 const port = process.env.PORT || 3000;
 
