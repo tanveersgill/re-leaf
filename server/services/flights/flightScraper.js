@@ -14,12 +14,12 @@ class FlightPage {
   constructor() {}
 
   async init() {
-    this.browser = await chromium.launch({
-      channel: "chrome",
-      headless: false,
+    this.browser = await chromium.launch();
+    this.context = await this.browser.newContext({
+      viewport: { width: 1920, height: 1080 },
     });
 
-    this.page = await this.browser.newPage();
+    this.page = await this.context.newPage();
     await this.page.goto(this.url);
     this.ready = true;
   }

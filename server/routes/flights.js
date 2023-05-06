@@ -1,5 +1,5 @@
 import express from "express";
-import { searchFlights } from "../services/flights/headlessBrowser.js";
+import { searchFlights } from "../services/flights/flightScraper.js";
 
 const flights = express.Router();
 
