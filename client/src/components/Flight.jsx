@@ -99,7 +99,7 @@ const SavingsSection = styled.div`
   border-radius: 8px;
 `;
 
-const GoogleMaps = () => {
+const Flight = () => {
   const navigate = useNavigate();
 
   return (
@@ -158,7 +158,9 @@ const GoogleMaps = () => {
         </SavingsSection>
         <ButtonContainer>
           <SidebarButton onClick={() => navigate("/")}>Back</SidebarButton>
-          <SidebarButton>Next</SidebarButton>
+          <SidebarButton onClick={() => navigate("/plan/accomodation")}>
+            Next
+          </SidebarButton>
         </ButtonContainer>
       </Sidebar>
       <Map>
@@ -175,4 +177,4 @@ const GoogleMaps = () => {
   );
 };
 
-export default GoogleMaps;
+export default Flight;
