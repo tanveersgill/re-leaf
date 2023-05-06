@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { AiFillCar } from "react-icons/ai";
+import { IoIosAirplane, IoIosPricetag } from "react-icons/io";
 
 const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_REACT_APP_GOOGLE_MAPS_API_KEY;
 
@@ -11,12 +13,23 @@ const Container = styled.div`
 
 const Sidebar = styled.div`
   width: 30%;
-  background-color: #4caf50;
-  color: white;
+  background-color: #e0f2f1;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+`;
+
+const SidebarSection = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  border-bottom: 1px solid white;
 `;
 
 const Map = styled.div`
@@ -30,7 +43,7 @@ const StyledIframe = styled.iframe`
 `;
 
 const SidebarButton = styled.button`
-  background-color: #66bb6a;
+  background-color: #4caf50;
   border: none;
   color: white;
   padding: 10px 20px;
@@ -48,25 +61,111 @@ const SidebarButton = styled.button`
   }
 `;
 
-const GoogleMaps = (props) => {
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  gap: 10px;
+`;
+
+const SectionTitle = styled.h2`
+  font-size: 24px;
+  margin-bottom: 10px;
+`;
+
+const InfoRow = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  margin: 5px 0;
+`;
+
+const Icon = styled.span`
+  margin-right: 10px;
+  font-size: 24px;
+`;
+
+const SavingsSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  background-color: #4caf5021;
+  color: black;
+  font-size: 18px;
+  margin-top: 20px;
+  border-radius: 8px;
+`;
+
+const GoogleMaps = () => {
   return (
     <Container>
       <Sidebar>
-        <h2>Some Heading</h2>
-        <p>Some text or content here...</p>
-        <div className="buttons">
-          <SidebarButton>Button 1</SidebarButton>
-          <SidebarButton>Button 2</SidebarButton>
-        </div>
+        <SidebarSection>
+          <SectionTitle>Best Option</SectionTitle>
+          <InfoRow>
+            <Icon>
+              <IoIosAirplane />
+            </Icon>
+            Carrier: XYZ Airlines
+          </InfoRow>
+          <InfoRow>
+            <Icon>
+              <AiFillCar />
+            </Icon>
+            Carbon Emission: 250 kg
+          </InfoRow>
+          <InfoRow>
+            <Icon>
+              <IoIosPricetag />
+            </Icon>
+            Price: $500
+          </InfoRow>
+        </SidebarSection>
+        <SidebarSection>
+          <SectionTitle>Worst Option</SectionTitle>
+          <InfoRow>
+            <Icon>
+              <IoIosAirplane />
+            </Icon>
+            Carrier: ABC Airlines
+          </InfoRow>
+          <InfoRow>
+            <Icon>
+              <AiFillCar />
+            </Icon>
+            Carbon Emission: 450 kg
+          </InfoRow>
+          <InfoRow>
+            <Icon>
+              <IoIosPricetag />
+            </Icon>
+            Price: $750
+          </InfoRow>
+        </SidebarSection>
+        <SavingsSection>
+          <p>
+            By choosing the best option, you save <strong>$250</strong> and
+            reduce carbon emissions by <strong>200 kg</strong>!
+          </p>
+          <p>
+            <em>Help the Earth by choosing eco-friendly options!</em>
+          </p>
+        </SavingsSection>
+        <ButtonContainer>
+          <SidebarButton>Back</SidebarButton>
+          <SidebarButton>Next</SidebarButton>
+        </ButtonContainer>
       </Sidebar>
       <Map>
         <StyledIframe
           allowFullScreen
           title="Google Maps"
           src={`https://www.google.com/maps/embed/v1/directions?key=${GOOGLE_MAPS_API_KEY}
-          &origin=${props.origin || "Toronto"}
-          &destination=${props.destination || "SanFrancisco+California"}
-          &mode=${props.mode || "flying"}`}
+          &origin=Toronto
+          &destination=SanFrancisco+California
+          &mode=flying`}
         />
       </Map>
     </Container>
