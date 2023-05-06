@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import avatarImage from "../assets/avatarImage.jpeg";
+import jasonKuo from "../assets/jasonkuo.jpeg";
+import williamWong from "../assets/williamwong.jpeg";
+import kaiThompson from "../assets/kaithompson.jpeg";
 export default function Testimonials() {
   return (
     <Section id="testimonials">
@@ -10,40 +12,40 @@ export default function Testimonials() {
       <div className="testimonials">
         <div className="testimonial">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
-            asperiores eaque.
+          With this eco-friendly travel planning service, I traveled sustainably and discovered breathtaking destinations guilt-free. 
+          Highly recommend their expertise! 
           </p>
           <div className="info">
-            <img src={avatarImage} alt="" />
+            <img src={kaiThompson} alt="" />
             <div className="details">
-              <h4>Kishan Sheth</h4>
-              <span>CEO - Shashaan Web Solutions</span>
+              <h4>Kai Thompson</h4>
+              <span>CEO - Meta Platforms</span>
             </div>
           </div>
         </div>
         <div className="testimonial">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
-            asperiores eaque.
+          Thanks to this eco-friendly travel planning service,
+          I was able to explore the world while minimizing my carbon footprint. 
           </p>
           <div className="info">
-            <img src={avatarImage} alt="" />
+            <img src={jasonKuo} alt="" />
             <div className="details">
-              <h4>Kishan Sheth</h4>
-              <span>CEO - Shashaan Web Solutions</span>
+              <h4>Tanveer Gill</h4>
+              <span>CEO - Google </span>
             </div>
           </div>
         </div>
         <div className="testimonial">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
-            asperiores eaque.
+          I'm grateful for this service that made my travels more sustainable.
+          It's comforting to know that I can explore the world with a lighter footprint.
           </p>
           <div className="info">
-            <img src={avatarImage} alt="" />
+            <img src={williamWong} alt="" />
             <div className="details">
-              <h4>Kishan Sheth</h4>
-              <span>CEO - Shashaan Web Solutions</span>
+              <h4>William Wong</h4>
+              <span>CEO - Google</span>
             </div>
           </div>
         </div>
