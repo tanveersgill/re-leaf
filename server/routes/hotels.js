@@ -1,12 +1,9 @@
 import express from "express";
-import {
-  getAttractionsFromLocation,
-  getAttractionDetails,
-} from "../services/tripAdvisorService.js";
+import { getCategoriesFromLocation } from "../services/googlePlaceService.js";
 
-const attractions = express.Router();
+const hotels = express.Router();
 
-attractions.get("/", async (req, res) => {
+hotels.get("/", async (req, res) => {
   // parse location from query string
   const location = req.query.location;
 
@@ -15,22 +12,12 @@ attractions.get("/", async (req, res) => {
     return;
   }
 
-  const attrs = await getAttractionsFromLocation(location, "hotels");
-
-  const promises = [];
-  for (const attr of attrs.data) {
-    const { location_id } = attr;
-    if (!location_id) {
-      continue;
-    }
-
-    promises.push(getAttractionDetails(location_id));
+  try {
+    const hotels = await getCategoriesFromLocation(location, "lodging");
+    res.send(hotels);
+  } catch (e) {
+    res.status(500).send(e);
   }
-
-  const details = await Promise.all(promises);
-  const filteredDetails = details.filter((detail) => detail);
-
-  res.send(filteredDetails);
 });
 
-export default attractions;
+export default hotels;

@@ -18,5 +18,8 @@
     "playwright": "^1.33.0",
     "playwright-extra": "^4.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.40.0"
   }
 }
