@@ -1,17 +1,22 @@
 import axios from "axios";
 import { TRIP_ADVISOR_BASE_URL } from "../constants.js";
 
-export const getAttractionsFromLocation = async (location) => {
+export const getAttractionsFromLocation = async (location, category) => {
+  const latLong = await getLatitudeAndLongitudeStr(location);
+
   const queryParams = new URLSearchParams({
     key: process.env.TRIP_ADVISOR_API_KEY,
-    searchQuery: location,
     language: "en",
-    address: location,
+    latLong,
   });
+
+  if (category) {
+    queryParams.append("category", category);
+  }
 
   const queryString = queryParams.toString();
 
-  const requestUrl = `${TRIP_ADVISOR_BASE_URL}/location/search/?${queryString}`;
+  const requestUrl = `${TRIP_ADVISOR_BASE_URL}/location/nearby_search/?${queryString}`;
 
   const response = await axios.get(requestUrl);
 
@@ -56,4 +61,15 @@ export const getAttractionDetails = async (locationId) => {
   } catch (e) {
     return null;
   }
+};
+
+const getLatitudeAndLongitudeStr = async (location) => {
+  const requestUrl = `https://geocode.maps.co/search?q=${location}`;
+
+  const response = await axios.get(requestUrl);
+
+  const lat = response.data[0].lat;
+  const lng = response.data[0].lon;
+
+  return `${lat},${lng}`;
 };
