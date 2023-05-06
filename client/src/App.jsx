@@ -8,7 +8,6 @@ import Services from "./components/Services";
 import Testimonials from "./components/Testimonials";
 import scrollreveal from "scrollreveal";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import MapPage from "./components/MapPage";
 import GoogleMaps from "./components/GoogleMaps";
 
 export default function App() {
@@ -51,7 +50,12 @@ export default function App() {
             </div>
           }
         ></Route>
-        <Route path="/map" element={<GoogleMaps />}></Route>
+        <Route path="/plan" element={<GoogleMaps />}>
+          <Route index path="flight" element={<GoogleMaps />} />
+          <Route path="accomodation" element={<GoogleMaps />} />
+          <Route path="activities" element={<GoogleMaps />} />
+          <Route path="summary" element={<GoogleMaps />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

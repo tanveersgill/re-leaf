@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import styled from "styled-components";
 import logo from "../assets/logo.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { VscChromeClose } from "react-icons/vsc";
+import LoginButton from "./LoginButton";
+import LogoutButton from "./LogoutButton";
+
 export default function Navbar() {
+  const { isAuthenticated } = useAuth0();
   const [navbarState, setNavbarState] = useState(false);
+
   return (
     <>
       <Nav>
@@ -36,7 +42,7 @@ export default function Navbar() {
             <a href="#testimonials">Testimonials</a>
           </li>
         </ul>
-        <button>Connect</button>
+        {isAuthenticated ? <LogoutButton /> : <LoginButton />}
       </Nav>
       <ResponsiveNav state={navbarState}>
         <ul>

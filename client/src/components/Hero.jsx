@@ -30,7 +30,7 @@ export default function Hero() {
             <label htmlFor="">Check-out</label>
             <input type="date" />
           </div>
-          <button><Link to='/map'>Explore Now</Link></button>
+          <button><Link to='/plan'>Explore Now</Link></button>
         </div>
       </div>
     </Section>

@@ -48,7 +48,7 @@ const SidebarButton = styled.button`
   }
 `;
 
-const GoogleMaps = () => {
+const GoogleMaps = (props) => {
   return (
     <Container>
       <Sidebar>
@@ -64,9 +64,9 @@ const GoogleMaps = () => {
           allowFullScreen
           title="Google Maps"
           src={`https://www.google.com/maps/embed/v1/directions?key=${GOOGLE_MAPS_API_KEY}
-          &origin=Toronto
-          &destination=SanFrancisco+California
-          &mode=flying`}
+          &origin=${props.origin || "Toronto"}
+          &destination=${props.destination || "SanFrancisco+California"}
+          &mode=${props.mode || "flying"}`}
         />
       </Map>
     </Container>
