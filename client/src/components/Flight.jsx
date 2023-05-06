@@ -60,7 +60,6 @@ const SidebarButton = styled.button`
   transition-duration: 0.4s;
   border-radius: 4px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
   &:hover {
     background-color: #43a047;
   }

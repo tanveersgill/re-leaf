@@ -17,8 +17,8 @@ body {
 
 ::-webkit-scrollbar {
   width: 0.6rem;
-  background-color: #14213d;
+  background-color: #a3aba6;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #4539e6;
+  background-color: #29664c;
 }
