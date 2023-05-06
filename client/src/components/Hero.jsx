@@ -11,8 +11,8 @@ export default function Hero() {
         <div className="title">
           <h1>TRAVEL SUSTAINABLY</h1>
           <p>
-            Re-Leaf takes travelling to a new level. Plan trips in a 
-            way that is both cost-effective and eco-friendly.  
+            Re-Leaf takes travelling to a new level. Plan trips in a way that is
+            both cost-effective and eco-friendly.
           </p>
         </div>
         <div className="search">
@@ -86,7 +86,7 @@ const Section = styled.section`
         padding: 0 1.5rem;
         label {
           font-size: 1.1rem;
-          color: #03045e;
+          color: #004c23;
         }
         input {
           background-color: transparent;
@@ -111,12 +111,12 @@ const Section = styled.section`
         border-radius: 0.3rem;
         border: none;
         color: white;
-        background-color: #4361ee;
+        background-color: #2ca744;
         font-size: 1.1rem;
         text-transform: uppercase;
         transition: 0.3s ease-in-out;
         &:hover {
-          background-color: #023e8a;
+          background-color: #1c7a30;
         }
       }
     }

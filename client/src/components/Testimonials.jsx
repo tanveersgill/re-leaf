@@ -66,7 +66,7 @@ const Section = styled.section`
     margin: 0 2rem;
     gap: 2rem;
     .testimonial {
-      background-color: aliceblue;
+      background-color: #e8f5e9;
       padding: 2rem;
       border-radius: 0.5rem;
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;

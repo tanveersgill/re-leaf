@@ -128,7 +128,7 @@ const Section = styled.section`
         border-bottom: 0.1rem solid black;
       }
       .active {
-        border-bottom: 0.5rem solid #8338ec;
+        border-bottom: 0.5rem solid #4caf50;
       }
     }
   }
@@ -142,7 +142,7 @@ const Section = styled.section`
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
-      background-color: #8338ec14;
+      background-color: #4caf5021;
       border-radius: 1rem;
       transition: 0.3s ease-in-out;
       &:hover {
@@ -160,7 +160,7 @@ const Section = styled.section`
           gap: 0.3rem;
           img {
             border-radius: 1rem;
-            background-color: #4d2ddb84;
+            background-color: #2e7d32a3;
             width: 2rem;
             /* padding: 1rem; */
             padding: 0.3rem 0.4rem;
