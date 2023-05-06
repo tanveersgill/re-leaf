@@ -2,10 +2,12 @@ import express from 'express'
 import { auth } from 'express-oauth2-jwt-bearer'
 import dotenv from 'dotenv';
 import mongoose from 'mongoose'
+import User from './database/models/user.js';
+import Trip from './database/models/trip.js'
 
 import attractions from './routes/attractions.js';
-import { MONGODB_URI } from './constants.js';
 
+const MONGODB_URI = process.env.MONGO_URI
 dotenv.config();
 
 const router = express.Router();
