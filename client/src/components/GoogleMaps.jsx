@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { AiFillCar } from "react-icons/ai";
 import { IoIosAirplane, IoIosPricetag } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_REACT_APP_GOOGLE_MAPS_API_KEY;
 
@@ -99,6 +100,8 @@ const SavingsSection = styled.div`
 `;
 
 const GoogleMaps = () => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <Sidebar>
@@ -154,7 +157,7 @@ const GoogleMaps = () => {
           </p>
         </SavingsSection>
         <ButtonContainer>
-          <SidebarButton>Back</SidebarButton>
+          <SidebarButton onClick={() => navigate("/")}>Back</SidebarButton>
           <SidebarButton>Next</SidebarButton>
         </ButtonContainer>
       </Sidebar>
