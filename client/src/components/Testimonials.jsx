@@ -12,8 +12,9 @@ export default function Testimonials() {
       <div className="testimonials">
         <div className="testimonial">
           <p>
-          With this eco-friendly travel planning service, I traveled sustainably and discovered breathtaking destinations guilt-free. 
-          Highly recommend their expertise! 
+            With this eco-friendly travel planning service, I traveled
+            sustainably and discovered breathtaking destinations guilt-free.
+            Highly recommend their expertise!
           </p>
           <div className="info">
             <img src={kaiThompson} alt="" />
@@ -25,21 +26,22 @@ export default function Testimonials() {
         </div>
         <div className="testimonial">
           <p>
-          Thanks to this eco-friendly travel planning service,
-          I was able to explore the world while minimizing my carbon footprint. 
+            Thanks to this eco-friendly travel planning service, I was able to
+            explore the world while minimizing my carbon footprint.
           </p>
           <div className="info">
             <img src={jasonKuo} alt="" />
             <div className="details">
-              <h4>Tanveer Gill</h4>
+              <h4>Jason Kuo</h4>
               <span>CEO - Google </span>
             </div>
           </div>
         </div>
         <div className="testimonial">
           <p>
-          I'm grateful for this service that made my travels more sustainable.
-          It's comforting to know that I can explore the world with a lighter footprint.
+            I'm grateful for this service that made my travels more sustainable.
+            It's comforting to know that I can explore the world with a lighter
+            footprint.
           </p>
           <div className="info">
             <img src={williamWong} alt="" />
