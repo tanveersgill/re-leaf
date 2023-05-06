@@ -198,7 +198,7 @@ const Activities = () => {
             Back
           </SidebarButton>
           <SidebarButton onClick={() => navigate("/plan/summary")}>
-            Next
+            Finish
           </SidebarButton>
         </ButtonContainer>
       </Sidebar>

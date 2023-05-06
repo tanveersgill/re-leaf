@@ -150,6 +150,9 @@ export default function Summary() {
                 </li>
               </ul>
             </dd>
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+              <button className="confirmButton">Confirm</button>
+            </div>
           </div>
         </dl>
       </div>
