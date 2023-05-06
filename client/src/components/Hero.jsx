@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styled from "styled-components";
 import homeImage from "../assets/hero.png";
 import { useNavigate } from "react-router-dom";
+import { useTripBuilder } from "../context/TripBuilderContext";
 
 export default function Hero() {
   const navigate = useNavigate();
@@ -9,6 +10,33 @@ export default function Hero() {
   const handleClick = () => {
     navigate("/plan/flight");
   };
+
+  const { trip, setTrip } = useTripBuilder();
+
+  const handleDestinationChange = (e) => {
+    const { value } = e.target;
+    value.replaceAll(" ", "+");
+    setTrip({ ...trip, destination: e.target.value });
+  };
+
+  const handleCheckInChange = (e) => {
+    const { value } = e.target;
+    value.replaceAll(" ", "+");
+    setTrip({ ...trip, startDate: e.target.value });
+  };
+
+  const handleCheckOutChange = (e) => {
+    setTrip({ ...trip, endDate: e.target.value });
+  };
+
+  const isDisabled = useMemo(() => {
+    return (
+      trip.destination === "" ||
+      trip.startDate === "" ||
+      trip.endDate === "" ||
+      trip.startDate > trip.endDate
+    );
+  }, [trip]);
 
   return (
     <Section id="hero">
@@ -26,17 +54,32 @@ export default function Hero() {
         <div className="search">
           <div className="container">
             <label htmlFor="">Where you want to go</label>
-            <input type="text" placeholder="Search Your location" />
+            <input
+              type="text"
+              value={trip.destination}
+              placeholder="Search Your location"
+              onChange={handleDestinationChange}
+            />
           </div>
           <div className="container">
             <label htmlFor="">Check-in</label>
-            <input type="date" />
+            <input
+              type="date"
+              value={trip.startDate}
+              onChange={handleCheckInChange}
+            />
           </div>
           <div className="container">
             <label htmlFor="">Check-out</label>
-            <input type="date" />
+            <input
+              type="date"
+              value={trip.endDate}
+              onChange={handleCheckOutChange}
+            />
           </div>
-          <button onClick={handleClick}>Explore Now</button>
+          <button onClick={handleClick} disabled={isDisabled}>
+            Explore Now
+          </button>
         </div>
       </div>
     </Section>

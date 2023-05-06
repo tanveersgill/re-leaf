@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { AiFillCar } from "react-icons/ai";
 import { IoIosAirplane, IoIosPricetag } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import { useTripBuilder } from "../context/TripBuilderContext";
 
 const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_REACT_APP_GOOGLE_MAPS_API_KEY;
 
@@ -114,6 +115,7 @@ const SavingsSection = styled.div`
 `;
 
 const Flight = () => {
+  const { trip } = useTripBuilder();
   const navigate = useNavigate();
 
   return (
@@ -125,13 +127,15 @@ const Flight = () => {
             <Icon>
               <IoIosAirplane />
             </Icon>
-            <InfoContainer>
-              Carrier:{" "}
-              <a href="https://www.united.com/en/ca" target="_blank">
-                {" "}
-                United Airlines
-              </a>
-            </InfoContainer>
+            Carrier:{" "}
+            <a
+              href="https://www.united.com/en/ca"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {" "}
+              United Airlines
+            </a>
           </InfoRow>
           <InfoRow>
             <Icon>
@@ -156,6 +160,7 @@ const Flight = () => {
             <a
               href="https://www.aircanada.com/ca/en/aco/home.html"
               target="_blank"
+              rel="noreferrer"
             >
               {" "}
               Air Canada
@@ -198,8 +203,8 @@ const Flight = () => {
           allowFullScreen
           title="Google Maps"
           src={`https://www.google.com/maps/embed/v1/directions?key=${GOOGLE_MAPS_API_KEY}
-          &origin=Toronto
-          &destination=SanFrancisco+California
+          &origin=${trip.origin}
+          &destination=${trip.destination}
           &mode=flying`}
         />
       </Map>
