@@ -8,7 +8,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <Auth0Provider
     domain={import.meta.env.VITE_APP_AUTH0_DOMAIN}
     clientId={import.meta.env.VITE_APP_AUTH0_CLIENT_ID}
-    redirectUri={window.location.origin}
+    authorizationParams={{
+      audience: import.meta.env.VITE_APP_AUTH0_AUDIENCE,
+      scope: "read:current_user",
+      redirect_uri: window.location.origin,
+    }}
   >
     <App />
   </Auth0Provider>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import styled from "styled-components";
 import logo from "../assets/logo.png";
@@ -9,7 +9,6 @@ import LogoutButton from "./LogoutButton";
 
 export default function Navbar() {
   const { isAuthenticated } = useAuth0();
-
   const [navbarState, setNavbarState] = useState(false);
 
   return (

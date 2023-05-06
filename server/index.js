@@ -1,34 +1,23 @@
-import express from 'express';
-import { auth, requiresAuth } from 'express-openid-connect';
+import express from 'express'
+import { auth } from 'express-oauth2-jwt-bearer'
 
 const app = express();
 
+const port = process.env.PORT || 3000;
 
-const config = {
-  authRequired: false,
-  auth0Logout: true,
-  baseURL: 'http://localhost:3000',
-  clientID: 'BRisGlctvcUGFS3sYns6Bv2HSqIjymWq',
-  issuerBaseURL: 'https://dev-o8pk24f3t812sdqo.us.auth0.com',
-  secret: 'penis'
-};
-
-// The `auth` router attaches /login, /logout
-// and /callback routes to the baseURL
-app.use(auth(config));
-
-// req.oidc.isAuthenticated is provided from the auth router
-app.get('/', (req, res) => {
-  res.send(
-    req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out'
-  )
+const jwtCheck = auth({
+  audience: 'http://localhost:3000',
+  issuerBaseURL: 'https://dev-o8pk24f3t812sdqo.us.auth0.com/',
+  tokenSigningAlg: 'RS256'
 });
 
-// The /profile route will show the user profile as JSON
-app.get('/profile', requiresAuth(), (req, res) => {
-  res.send(JSON.stringify(req.oidc.user, null, 2));
+// enforce on all endpoints
+app.use(jwtCheck);
+
+app.get('/authorized', function (req, res) {
+    res.send('Secured Resource');
 });
 
-app.listen(3000, function() {
-  console.log('Listening on http://localhost:3000');
-});
+app.listen(port);
+
+console.log('Running on port ', port);
