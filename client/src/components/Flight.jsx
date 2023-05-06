@@ -111,19 +111,23 @@ const Flight = () => {
             <Icon>
               <IoIosAirplane />
             </Icon>
-            Carrier: XYZ Airlines
+            Carrier:{" "}
+            <a href="https://www.united.com/en/ca" target="_blank">
+              {" "}
+              United Airlines
+            </a>
           </InfoRow>
           <InfoRow>
             <Icon>
               <AiFillCar />
             </Icon>
-            Carbon Emission: 250 kg
+            Carbon Emission: 275 kg
           </InfoRow>
           <InfoRow>
             <Icon>
               <IoIosPricetag />
             </Icon>
-            Price: $500
+            Price: $565
           </InfoRow>
         </SidebarSection>
         <SidebarSection>
@@ -132,28 +136,38 @@ const Flight = () => {
             <Icon>
               <IoIosAirplane />
             </Icon>
-            Carrier: ABC Airlines
+            Carrier:{" "}
+            <a
+              href="https://www.aircanada.com/ca/en/aco/home.html"
+              target="_blank"
+            >
+              {" "}
+              Air Canada
+            </a>
           </InfoRow>
           <InfoRow>
             <Icon>
               <AiFillCar />
             </Icon>
-            Carbon Emission: 450 kg
+            Carbon Emission: 366 kg
           </InfoRow>
           <InfoRow>
             <Icon>
               <IoIosPricetag />
             </Icon>
-            Price: $750
+            Price: $797
           </InfoRow>
         </SidebarSection>
         <SavingsSection>
           <p>
-            By choosing the best option, you save <strong>$250</strong> and
-            reduce carbon emissions by <strong>200 kg</strong>!
+            By choosing the best option, you save <strong>$232</strong> and
+            reduce carbon emissions by <strong>91 kg</strong>!
           </p>
           <p>
-            <em>Help the Earth by choosing eco-friendly options!</em>
+            <em>
+              Help the Earth by choosing eco-friendly options and earn 91
+              points!
+            </em>
           </p>
         </SavingsSection>
         <ButtonContainer>
