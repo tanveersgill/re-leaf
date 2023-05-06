@@ -1,6 +1,6 @@
 import express from 'express'
 import jwt_decode from 'jwt-decode'
-import { getUserById } from '../services/mongoService'; 
+import { getUserBySubject } from '../services/mongoService'; 
 
 const profile = express.Router();
 
@@ -9,7 +9,7 @@ profile.get('/', async (req, res, next) => {
     let decoded = jwt_decode(token)
     let subject = decoded.payload.sub
 
-    let user = getUserById(subject);
+    let user = getUserBySubject(subject);
     res.status(200).json(user);
 })
 
