@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import avatarImage from "../assets/avatarImage.jpeg";
 import jasonKuo from "../assets/jasonkuo.jpeg";
 import williamWong from "../assets/williamwong.jpeg";
 import kaiThompson from "../assets/kaithompson.jpeg";
