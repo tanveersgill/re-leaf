@@ -20,6 +20,7 @@ const Sidebar = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
 const SidebarSection = styled.div`
@@ -30,7 +31,9 @@ const SidebarSection = styled.div`
   justify-content: center;
   text-align: center;
   padding: 20px;
-  border-bottom: 1px solid white;
+  background-color: white;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
 `;
 
 const Map = styled.div`
@@ -56,6 +59,7 @@ const SidebarButton = styled.button`
   cursor: pointer;
   transition-duration: 0.4s;
   border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   &:hover {
     background-color: #43a047;
@@ -71,6 +75,7 @@ const ButtonContainer = styled.div`
 const SectionTitle = styled.h2`
   font-size: 24px;
   margin-bottom: 10px;
+  font-weight: 600;
 `;
 
 const InfoRow = styled.div`
@@ -80,9 +85,18 @@ const InfoRow = styled.div`
   margin: 5px 0;
 `;
 
+const InfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+`;
+
 const Icon = styled.span`
   margin-right: 10px;
   font-size: 24px;
+  color: #4caf50;
 `;
 
 const SavingsSection = styled.div`
@@ -97,6 +111,7 @@ const SavingsSection = styled.div`
   font-size: 18px;
   margin-top: 20px;
   border-radius: 8px;
+  font-weight: 600;
 `;
 
 const Flight = () => {
@@ -111,23 +126,25 @@ const Flight = () => {
             <Icon>
               <IoIosAirplane />
             </Icon>
-            Carrier:{" "}
-            <a href="https://www.united.com/en/ca" target="_blank">
-              {" "}
-              United Airlines
-            </a>
+            <InfoContainer>
+              Carrier:{" "}
+              <a href="https://www.united.com/en/ca" target="_blank">
+                {" "}
+                United Airlines
+              </a>
+            </InfoContainer>
           </InfoRow>
           <InfoRow>
             <Icon>
               <AiFillCar />
             </Icon>
-            Carbon Emission: 275 kg
+            <InfoContainer>Carbon Emission: 275 kg</InfoContainer>
           </InfoRow>
           <InfoRow>
             <Icon>
               <IoIosPricetag />
             </Icon>
-            Price: $565
+            <InfoContainer>Price: $565</InfoContainer>
           </InfoRow>
         </SidebarSection>
         <SidebarSection>
