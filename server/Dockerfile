@@ -1,14 +1,10 @@
 FROM mcr.microsoft.com/playwright:v1.33.0-jammy
 
-ARG GOOGLE_API_KEY
-ENV GOOGLE_API_KEY=${GOOGLE_API_KEY}
-
-ENV HOME=/home/pwuser
-WORKDIR ${HOME}
+WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm install
+RUN yarn
 
 COPY . .
 
