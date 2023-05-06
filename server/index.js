@@ -8,6 +8,7 @@ import Trip from './database/models/trip.js'
 import attractions from './routes/attractions.js';
 import hotels from './routes/hotels.js';
 import { MONGODB_URI } from './constants.js';
+import flights from './routes/flights.js';
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ const router = express.Router();
 
 router.use('/attractions', attractions);
 router.use('/hotels', hotels)
+router.use('/flights', flights);
 
 const port = process.env.PORT || 3000;
 
