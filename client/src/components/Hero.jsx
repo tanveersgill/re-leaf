@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import homeImage from "../assets/hero.png";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
@@ -30,7 +30,9 @@ export default function Hero() {
             <label htmlFor="">Check-out</label>
             <input type="date" />
           </div>
-          <button><Link to='/plan'>Explore Now</Link></button>
+          <button>
+            <Link to="/plan/flight">Explore Now</Link>
+          </button>
         </div>
       </div>
     </Section>
