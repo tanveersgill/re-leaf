@@ -133,10 +133,10 @@ const Activities = () => {
               <IoIosAirplane />
             </Icon>
             <InfoContainer>
-              Carrier:{" "}
+              Attraction:{" "}
               <a href="https://www.united.com/en/ca" target="_blank">
                 {" "}
-                United Airlines
+                San Fransisco Zoo
               </a>
             </InfoContainer>
           </InfoRow>
@@ -144,13 +144,13 @@ const Activities = () => {
             <Icon>
               <AiFillCar />
             </Icon>
-            <InfoContainer>Carbon Emission: 275 kg</InfoContainer>
+            <InfoContainer>Environmental Rating: 5/5 </InfoContainer>
           </InfoRow>
           <InfoRow>
             <Icon>
               <IoIosPricetag />
             </Icon>
-            <InfoContainer>Price: $565</InfoContainer>
+            <InfoContainer>Price: $20</InfoContainer>
           </InfoRow>
         </SidebarSection>
         <SidebarSection>
@@ -159,36 +159,36 @@ const Activities = () => {
             <Icon>
               <IoIosAirplane />
             </Icon>
-            Carrier:{" "}
+            Attraction:{" "}
             <a
               href="https://www.aircanada.com/ca/en/aco/home.html"
               target="_blank"
             >
               {" "}
-              Air Canada
+              Aquarium of the Bay
             </a>
           </InfoRow>
           <InfoRow>
             <Icon>
               <AiFillCar />
             </Icon>
-            Carbon Emission: 366 kg
+            Environmental Rating: 3/5
           </InfoRow>
           <InfoRow>
             <Icon>
               <IoIosPricetag />
             </Icon>
-            Price: $797
+            Price: $30
           </InfoRow>
         </SidebarSection>
         <SavingsSection>
           <p>
-            By choosing the best option, you save <strong>$232</strong> and
-            reduce carbon emissions by <strong>91 kg</strong>!
+            By choosing the best option, you save <strong>$30</strong> and
+            reduce carbon emissions by <strong>20 kg</strong>!
           </p>
           <p>
             <em>
-              Help the Earth by choosing eco-friendly options and earn 91
+              Help the Earth by choosing eco-friendly options and earn 20
               points!
             </em>
           </p>
@@ -197,7 +197,7 @@ const Activities = () => {
           <SidebarButton onClick={() => navigate("/plan/accommodation")}>
             Back
           </SidebarButton>
-          <SidebarButton onClick={() => navigate("/plan/activities")}>
+          <SidebarButton onClick={() => navigate("/plan/summary")}>
             Next
           </SidebarButton>
         </ButtonContainer>

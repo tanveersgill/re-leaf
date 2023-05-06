@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { AiFillCar } from "react-icons/ai";
 import { IoIosAirplane, IoIosPricetag } from "react-icons/io";
+import { FiHotel } from "react-icons/fi";
+import { BsStarFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
 const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_REACT_APP_GOOGLE_MAPS_API_KEY;
@@ -124,7 +126,7 @@ const Accomodation = () => {
           <SectionTitle>Best Option</SectionTitle>
           <InfoRow>
             <Icon>
-              <IoIosAirplane />
+              <FiHotel />
             </Icon>
             <InfoContainer>
               Hotel:{" "}
@@ -139,7 +141,7 @@ const Accomodation = () => {
           </InfoRow>
           <InfoRow>
             <Icon>
-              <AiFillCar />
+              <BsStarFill />
             </Icon>
             <InfoContainer>Rating: 4.5 stars</InfoContainer>
           </InfoRow>
