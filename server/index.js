@@ -1,7 +1,10 @@
 import express from 'express'
 import { auth } from 'express-oauth2-jwt-bearer'
 import dotenv from 'dotenv';
+import mongoose from 'mongoose'
+
 import attractions from './routes/attractions.js';
+import { MONGODB_URI } from './constants.js';
 
 dotenv.config();
 
@@ -22,6 +25,16 @@ const app = express();
 app.use(jwtCheck);
 app.use(router);
 
-app.listen(port);
+const serverInit = async () => {
+  try { //only start server on connection to mongodb
+    await mongoose.connect(MONGODB_URI);
+    console.log('Connected to MongoDB')
+    app.listen(port);
+    console.log('Server running on port ', port);
 
-console.log('Running on port ', port);
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+serverInit();
