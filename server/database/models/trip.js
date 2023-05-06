@@ -27,5 +27,5 @@ const tripSchema = new Schema({
     }
 })
 
-const tripModel = mongoose.model('Trip', tripSchema);
-export default tripModel;
+const Trip = mongoose.model('Trip', tripSchema);
+export default Trip;
