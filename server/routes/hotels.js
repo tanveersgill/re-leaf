@@ -15,7 +15,7 @@ attractions.get("/", async (req, res) => {
     return;
   }
 
-  const attrs = await getAttractionsFromLocation(location, "attractions");
+  const attrs = await getAttractionsFromLocation(location, "hotels");
 
   const promises = [];
   for (const attr of attrs.data) {

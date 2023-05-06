@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose'
 
 import attractions from './routes/attractions.js';
+import hotels from './routes/hotels.js';
 import { MONGODB_URI } from './constants.js';
 
 dotenv.config();
@@ -11,6 +12,7 @@ dotenv.config();
 const router = express.Router();
 
 router.use('/attractions', attractions);
+router.use('/hotels', hotels)
 
 const port = process.env.PORT || 3000;
 
