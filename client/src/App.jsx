@@ -7,6 +7,9 @@ import ScrollToTop from "./components/ScrollToTop";
 import Services from "./components/Services";
 import Testimonials from "./components/Testimonials";
 import scrollreveal from "scrollreveal";
+import {BrowserRouter, Routes, Route, Link} from 'react-router-dom' 
+import GoogleMaps from "./components/GoogleMaps";
+
 export default function App() {
   useEffect(() => {
     const sr = scrollreveal({
@@ -31,14 +34,26 @@ export default function App() {
     );
   }, []);
   return (
-    <div>
-      <ScrollToTop />
-      <Navbar />
-      <Hero />
-      <Services />
-      <Recommend />
-      <Testimonials />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={
+          <div>
+            <ScrollToTop />
+            <Navbar />
+            <Hero />
+            <Services />
+            <Recommend />
+            <Testimonials />
+            <Footer />
+          </div>
+        }>
+        </Route>
+        <Route path='/map' element={<GoogleMaps/>}>
+
+        </Route>
+      </Routes>
+      
+    </BrowserRouter>
+    
   );
 }

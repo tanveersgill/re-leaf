@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import homeImage from "../assets/hero.png";
+import {Link} from 'react-router-dom'
+
 export default function Hero() {
   return (
     <Section id="hero">
@@ -28,7 +30,7 @@ export default function Hero() {
             <label htmlFor="">Check-out</label>
             <input type="date" />
           </div>
-          <button>Explore Now</button>
+          <button><Link to='/maps'>Explore Now</Link></button>
         </div>
       </div>
     </Section>
