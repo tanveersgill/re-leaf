@@ -9,6 +9,10 @@ import Testimonials from "./components/Testimonials";
 import scrollreveal from "scrollreveal";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Flight from "./components/Flight";
+import Accomodation from "./components/Accomodation";
+import Activities from "./components/Activities";
+import Plan from "./components/Plan";
+// import Summary from "./components/Summary";
 
 export default function App() {
   useEffect(() => {
@@ -50,11 +54,11 @@ export default function App() {
             </div>
           }
         ></Route>
-        <Route path="/plan" element={<Flight />}>
+        <Route path="/plan" element={<Plan />}>
           <Route index path="flight" element={<Flight />} />
-          <Route path="accomodation" element={<Flight />} />
-          <Route path="activities" element={<Flight />} />
-          <Route path="summary" element={<Flight />} />
+          <Route path="accomodation" element={<Accomodation />} />
+          <Route path="activities" element={<Activities />} />
+          {/* <Route path="summary" element={<Summary />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>
