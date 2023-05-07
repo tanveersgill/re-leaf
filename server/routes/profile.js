@@ -20,7 +20,7 @@ profile.get("/", fetchUser, async (req, res) => {
 profile.get("/trips", fetchUser, async (req, res) => {
   let tripObjectIds = [];
   for (const tripId of req.userProfile.tripIds) {
-    let objId = Types.ObjectId(tripId);
+    let objId = new Types.ObjectId(tripId);
     tripObjectIds.push(objId);
   }
 
