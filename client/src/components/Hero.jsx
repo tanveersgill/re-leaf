@@ -1,14 +1,24 @@
-import React, { useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import styled from "styled-components";
 import homeImage from "../assets/hero.png";
 import { useNavigate } from "react-router-dom";
 import { useTripBuilder } from "../context/TripBuilderContext";
+import { useAuth0 } from "@auth0/auth0-react";
+import LoginModal from "./LoginModal";
 
 export default function Hero() {
   const navigate = useNavigate();
 
+  const [showModal, setShowModal] = useState(false);
+
+  const { isAuthenticated } = useAuth0();
+
   const handleClick = () => {
-    navigate("/plan/flight");
+    if (isAuthenticated) {
+      navigate("/plan/flight");
+    } else {
+      setShowModal(true);
+    }
   };
 
   const { trip, setTrip } = useTripBuilder();
@@ -80,6 +90,10 @@ export default function Hero() {
           <button onClick={handleClick} disabled={isDisabled}>
             Explore Now
           </button>
+          <LoginModal
+            showModal={showModal}
+            onClose={() => setShowModal(false)}
+          />
         </div>
       </div>
     </Section>
