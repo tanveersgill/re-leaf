@@ -31,6 +31,8 @@ export default function Summary() {
           flight: trip?.flights?.[0],
           accommodation: trip?.accommodations[0],
           attractions: trip?.activities,
+          origin: trip?.origin,
+          destination: trip?.destination,
         });
       } catch (e) {
         console.error(e);

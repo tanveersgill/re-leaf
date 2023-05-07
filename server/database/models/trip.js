@@ -23,6 +23,14 @@ const tripSchema = new Schema({
     type: [placeSchema],
     required: true,
   },
+  origin: {
+    type: String,
+    required: true,
+  },
+  destination: {
+    type: String,
+    required: true,
+  }
 });
 
 const Trip = mongoose.model("Trip", tripSchema);

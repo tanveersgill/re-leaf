@@ -16,7 +16,11 @@ const placeSchema = new Schema({
     categories: {
         type: [String],
         required: true
-    }
+    },
+    photoReference: {
+        type: String,
+        required: true
+    },
 })
 
 export default placeSchema
