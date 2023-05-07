@@ -3,7 +3,7 @@ import { useTripBuilder } from "../context/TripBuilderContext";
 import useProfile from "../hooks/network/useProfile";
 
 export default function Summary() {
-  const { trip } = useTripBuilder();
+  const { trip, setTrip } = useTripBuilder();
   const { addTrip } = useProfile();
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ export default function Summary() {
     (async () => {
       try {
         navigate("/");
-
+        setTrip({});
         await addTrip({
           start_date: trip?.startDate,
           end_date: trip?.endDate,

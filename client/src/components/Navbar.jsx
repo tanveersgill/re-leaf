@@ -14,6 +14,8 @@ export default function Navbar() {
   const { isAuthenticated, user } = useAuth0();
   const [navbarState, setNavbarState] = useState(false);
 
+  
+
   return (
     <>
       <Nav>

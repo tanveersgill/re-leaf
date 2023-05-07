@@ -2,14 +2,15 @@ import Trip from "./Trip";
 
 export default function ProfileView({ user, trips }) {
   return (
-      <div className="max-w-10xl ">
+    <div className='flex justify-center'>
+      <div className="max-w-screen-md ">
         <div className="px-4 sm:px-0 flex justify-left items-center gap-4">
           <img src={user.picture} className="rounded-full max-w-x"></img>
           <div>
             <h3 className="text-base font-semibold leading-7 text-green-600">
               {user.given_name} {user.family_name}
             </h3>
-            <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
+            <p className="mt-1 text-sm leading-6 text-gray-500">
               {user.email}
             </p>
           </div>
@@ -60,6 +61,7 @@ export default function ProfileView({ user, trips }) {
               trips.map((trip, i) => <Trip trip={trip} key={i} />)}
           </dl>
         </div>
+      </div>
       </div>
   );
 }
