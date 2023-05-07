@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import styled from "styled-components";
 import logo from "../assets/logo.png";
@@ -6,7 +6,11 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { VscChromeClose } from "react-icons/vsc";
 import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
+<<<<<<< HEAD
 import { NavLink } from "react-router-dom";
+=======
+import profilePhoto from "../assets/user.jpg";
+>>>>>>> 530bc4085a6308408f9b2f4f2867b6046104198f
 
 export default function Navbar() {
   const { isAuthenticated } = useAuth0();
@@ -43,6 +47,7 @@ export default function Navbar() {
             <a href="#testimonials">Testimonials</a>
           </li>
         </ul>
+<<<<<<< HEAD
         {isAuthenticated ? 
           <div class="flex justify-center items-center md:space-x-4">
             <NavLink to='/profile'>Profile</NavLink>
@@ -50,6 +55,21 @@ export default function Navbar() {
           </div> : 
           <LoginButton/>
         }
+=======
+        <ProfileContainer>
+          {isAuthenticated ? (
+            <>
+              <Profile>
+                <img src={profilePhoto} alt="Profile" />
+                <span>100 Points</span>
+              </Profile>
+              <LogoutButton />
+            </>
+          ) : (
+            <LoginButton />
+          )}
+        </ProfileContainer>
+>>>>>>> 530bc4085a6308408f9b2f4f2867b6046104198f
       </Nav>
       <ResponsiveNav state={navbarState}>
         <ul>
@@ -102,6 +122,7 @@ const Nav = styled.nav`
     display: flex;
     gap: 1rem;
     list-style-type: none;
+    align-items: center; // Add this line to center the navigation links vertically
     li {
       a {
         text-decoration: none;
@@ -120,6 +141,7 @@ const Nav = styled.nav`
       }
     }
   }
+
   button {
     padding: 0.5rem 1rem;
     cursor: pointer;
@@ -188,5 +210,27 @@ const ResponsiveNav = styled.div`
         }
       }
     }
+  }
+`;
+
+const ProfileContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
+
+const Profile = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+  }
+  span {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #2ca744;
   }
 `;

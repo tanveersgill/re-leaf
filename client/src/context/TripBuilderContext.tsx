@@ -1,18 +1,27 @@
 import { ReactNode, createContext, useContext, useState } from "react";
 
-interface Trip {
+export interface Trip {
   origin: string;
   destination?: string;
   startDate?: string;
   endDate?: string;
-  accommodation?: Accommodation;
+  accommodations?: Place[];
+  activities?: Place[];
+  flights?: Flight[];
 }
 
-interface Accommodation {
+export interface Place {
   name: string;
   address: string;
-  description: string;
-  image: string
+  rating: number;
+  categories: string[];
+}
+
+export interface Flight {
+  airline: string;
+  cost: number;
+  emissions: string;
+  emissionReduction: string;
 }
 
 interface TripBuilderContextProps {
@@ -23,6 +32,12 @@ interface TripBuilderContextProps {
 const defaultState: Partial<TripBuilderContextProps> = {
   trip: {
     origin: "Toronto, ON",
+    destination: "",
+    startDate: "",
+    endDate: "",
+    accommodations: [],
+    activities: [],
+    flights: [],
   },
 };
 

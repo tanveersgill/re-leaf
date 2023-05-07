@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useTripBuilder } from "../../context/TripBuilderContext";
 import useAuthenticatedRequest from "./useAuthenticatedRequest";
 
-const useAccommodations = () => {
+const useActivities = () => {
   const { trip, setTrip } = useTripBuilder();
   const { makeAuthenticatedRequest } = useAuthenticatedRequest();
 
@@ -13,16 +13,16 @@ const useAccommodations = () => {
       setIsLoading(true);
 
       const response = await makeAuthenticatedRequest(
-        `/api/hotels?location=${trip?.destination}`,
+        `/api/attractions?location=${trip?.destination}`,
         "GET"
       );
 
-      trip && setTrip && setTrip({ ...trip, accommodations: response });
+      trip && setTrip && setTrip({ ...trip, activities: response });
       setIsLoading(false);
     })();
   }, []);
 
-  return [trip?.accommodations, isLoading];
+  return [trip?.activities, isLoading];
 };
 
-export default useAccommodations;
+export default useActivities;
