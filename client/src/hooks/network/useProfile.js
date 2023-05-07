@@ -8,13 +8,18 @@ export default function useProfile() {
   const { isAuthenticated, user } = useAuth0();
   const [isLoading, setIsLoading] = useState(true);
   const [profile, setProfile] = useState({ username: "loading" });
+  const [trips, setTrips] = useState([]);
 
   useEffect(() => {
     (async () => {
       if (!isAuthenticated) return;
-      const p = await makeAuthenticatedRequest(`/api/profile`, "GET");
-      if (p) {
-        setProfile(p);
+      const [profileRes, tripRes] = await Promise.all([
+        makeAuthenticatedRequest(`/api/profile`, "GET"),
+        makeAuthenticatedRequest(`/api/profile/trips`, "GET"),
+      ]);
+      if (profileRes) {
+        setProfile(profileRes);
+        setTrips(tripRes.trips);
         return;
       }
       const registeredProfile = await makeAuthenticatedRequest(
@@ -35,5 +40,5 @@ export default function useProfile() {
     setProfile(updatedProfile);
   };
 
-  return { isLoading, profile, addTrip };
+  return { isLoading, profile, trips, addTrip };
 }
