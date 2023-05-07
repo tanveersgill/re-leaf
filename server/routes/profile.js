@@ -34,6 +34,17 @@ profile.post("/trip/add", fetchUser, async (req, res) => {
 
   await newTrip.save();
 
+  const emissionReductionPercentage =
+    trip.flight.emissionReduction.split("%")?.[0] / 100;
+
+  const emissions = trip.flight.emissions.split(" ")[0];
+
+  const carbonSaved = emissionReductionPercentage * emissions * -1;
+
+  if (carbonSaved > 0) {
+    req.mongoUser.points += carbonSaved * 10;
+  }
+
   req.mongoUser.tripIds.push(newTrip._id);
 
   await req.mongoUser.save();

@@ -94,3 +94,53 @@ export default function ProfileView(props) {
     </div>
   );
 }
+
+const TripDetails = ({ trip }) => {
+  const emissionReductionPercentage =
+    trip.flight.emissionReduction.split("%")?.[0] / 100;
+
+  const emissions = trip.flight.emissions.split(" ")[0];
+
+  const emissionsSaved = emissionReductionPercentage * emissions * -1;
+
+  const name =
+    trip.accommodation.address.split(",")[
+      trip.accommodation.address.split(",").length - 1
+    ];
+
+  return (
+    <div className="bg-white py-24 sm:py-10 text-left">
+      <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl p-10">
+        {name}
+      </dd>
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <dl className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
+          <div className="mx-auto flex max-w-xs flex-col gap-y-4">
+            <dt className="text-base leading-7 text-gray-600">
+              {trip.flight.cost}
+            </dt>
+            <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
+              Cost
+            </dd>
+          </div>
+          <div className="mx-auto flex max-w-xs flex-col gap-y-4">
+            <dt className="text-base leading-7 text-gray-600">
+              {emissionsSaved}
+            </dt>
+            <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
+              Carbon Saved
+            </dd>
+          </div>
+          <div className="mx-auto flex max-w-xs flex-col gap-y-4">
+            <dt className="text-base leading-7 text-gray-600">
+              {emissionsSaved * 10}
+            </dt>
+            <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
+              Points Earned
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  );
+};

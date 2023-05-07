@@ -36,6 +36,7 @@ const formatResponse = async (rawRes) => {
     const place = rawRes[i];
 
     rawRes[i] = {
+      photoReference: place.photos?.[0].photo_reference,
       name: place.name,
       address: place.vicinity,
       rating: place.rating,

@@ -6,11 +6,12 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { VscChromeClose } from "react-icons/vsc";
 import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
-import { NavLink, Link } from "react-router-dom";
-import profilePhoto from "../assets/user.jpg";
+import { Link } from "react-router-dom";
+import useProfile from "../hooks/network/useProfile";
 
 export default function Navbar() {
-  const { isAuthenticated } = useAuth0();
+  const { profile } = useProfile();
+  const { isAuthenticated, user } = useAuth0();
   const [navbarState, setNavbarState] = useState(false);
 
   return (
@@ -47,10 +48,10 @@ export default function Navbar() {
         <ProfileContainer>
           {isAuthenticated ? (
             <>
-              <Link to='/profile'>
+              <Link to="/profile">
                 <Profile>
-                  <img src={profilePhoto} alt="Profile" />
-                  <span>100 Points</span>
+                  <img src={user.picture} alt="Profile" />
+                  <span>{profile.points} Points</span>
                 </Profile>
               </Link>
               <LogoutButton />
