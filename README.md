@@ -14,3 +14,6 @@ yarn start
 ```
 
 4. Open http://localhost:3000 with your browser to see the result.
+
+Note:
+.env file is needed 
