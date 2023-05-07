@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { AiFillCar } from "react-icons/ai";
-import { IoIosAirplane, IoIosPricetag } from "react-icons/io";
+import { IoIosAirplane, IoIosPricetag, IoIosLeaf } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { useTripBuilder } from "../context/TripBuilderContext";
+import useFlights from "../hooks/network/useFlights";
 
 const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_REACT_APP_GOOGLE_MAPS_API_KEY;
 
@@ -118,72 +119,46 @@ const Flight = () => {
   const { trip } = useTripBuilder();
   const navigate = useNavigate();
 
+  const [flights] = useFlights();
+
+  const sortedFlights = flights.sort(
+    (a, b) =>
+      a.emissionReduction.split("%")[0] - b.emissionReduction.split("%")[0]
+  );
+
+  const costDifference =
+    (sortedFlights?.[sortedFlights?.length - 1]?.cost
+      ?.split("$")?.[1]
+      ?.replace(",", "") || 0) -
+    (sortedFlights?.[0]?.cost?.split("$")?.[1].replace(",", "") || 0);
+
+  const emissionsDifference =
+    (sortedFlights?.[sortedFlights?.length - 1]?.emissionReduction?.split(
+      "%"
+    )?.[0] || 0) -
+    (sortedFlights?.[0]?.emissionReduction?.split("%")?.[0] || 0);
+
   return (
     <Container>
       <Sidebar>
-        <SidebarSection>
-          <SectionTitle>Best Option</SectionTitle>
-          <InfoRow>
-            <Icon>
-              <IoIosAirplane />
-            </Icon>
-            Carrier:{" "}
-            <a
-              href="https://www.united.com/en/ca"
-              target="_blank"
-              rel="noreferrer"
-            >
-              {" "}
-              United Airlines
-            </a>
-          </InfoRow>
-          <InfoRow>
-            <Icon>
-              <AiFillCar />
-            </Icon>
-            <InfoContainer>Carbon Emission: 275 kg</InfoContainer>
-          </InfoRow>
-          <InfoRow>
-            <Icon>
-              <IoIosPricetag />
-            </Icon>
-            <InfoContainer>Price: $565</InfoContainer>
-          </InfoRow>
-        </SidebarSection>
-        <SidebarSection>
-          <SectionTitle>Worst Option</SectionTitle>
-          <InfoRow>
-            <Icon>
-              <IoIosAirplane />
-            </Icon>
-            Carrier:{" "}
-            <a
-              href="https://www.aircanada.com/ca/en/aco/home.html"
-              target="_blank"
-              rel="noreferrer"
-            >
-              {" "}
-              Air Canada
-            </a>
-          </InfoRow>
-          <InfoRow>
-            <Icon>
-              <AiFillCar />
-            </Icon>
-            Carbon Emission: 366 kg
-          </InfoRow>
-          <InfoRow>
-            <Icon>
-              <IoIosPricetag />
-            </Icon>
-            Price: $797
-          </InfoRow>
-        </SidebarSection>
+        <FlightSummary title="Best Option" flight={sortedFlights[0]} />
+        <FlightSummary
+          title="Worst Option"
+          flight={sortedFlights[sortedFlights.length - 1]}
+        />
         <SavingsSection>
-          <p>
-            By choosing the best option, you save <strong>$232</strong> and
-            reduce carbon emissions by <strong>91 kg</strong>!
-          </p>
+          {costDifference > 0 ? (
+            <p>
+              By choosing the best option, you save{" "}
+              <strong>${costDifference}</strong> and reduce carbon emissions by{" "}
+              <strong>{emissionsDifference} kg</strong>!
+            </p>
+          ) : (
+            <p>
+              By choosing the best option, reduce carbon emissions by{" "}
+              <strong>{emissionsDifference} kg</strong>!
+            </p>
+          )}
           <p>
             <em>
               Help the Earth by choosing eco-friendly options and earn 91
@@ -209,6 +184,40 @@ const Flight = () => {
         />
       </Map>
     </Container>
+  );
+};
+
+const FlightSummary = ({ title, flight }) => {
+  return (
+    <SidebarSection>
+      <SectionTitle>{title}</SectionTitle>
+      <InfoRow>
+        <Icon>
+          <IoIosAirplane />
+        </Icon>
+        Carrier: {flight?.airline}
+      </InfoRow>
+      <InfoRow>
+        <Icon>
+          <AiFillCar />
+        </Icon>
+        <InfoContainer>Carbon Emission: {flight?.emissions}</InfoContainer>
+      </InfoRow>
+      <InfoRow>
+        <Icon>
+          <IoIosLeaf />
+        </Icon>
+        <InfoContainer>
+          Carbon Reduction: {flight?.emissionReduction}
+        </InfoContainer>
+      </InfoRow>
+      <InfoRow>
+        <Icon>
+          <IoIosPricetag />
+        </Icon>
+        <InfoContainer>Round-trip Cost: {flight?.cost}</InfoContainer>
+      </InfoRow>
+    </SidebarSection>
   );
 };
 
