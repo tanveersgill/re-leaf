@@ -22,10 +22,12 @@ const Map = ({ coordinates }) => {
 
   const onLoad = useCallback(
     (map) => {
-      const bounds = new window.google.maps.LatLngBounds(
-        markers[0],
-        markers[1]
-      );
+      const bounds = new window.google.maps.LatLngBounds();
+
+      markers.forEach((marker) => {
+        bounds.extend(marker);
+      });
+
       map.fitBounds(bounds);
     },
     [markers]
