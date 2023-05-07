@@ -11,13 +11,13 @@ authRoutes.post('/register', async (req, res) => {
     console.log("DECODED", decodedToken)
     console.log('registering')
 
-    const registeredUser = User.create({
+    const registeredUser = await User.create({
         subjectId: req.auth.payload.sub,
         email: decodedToken.email,
         username: decodedToken.name
     })
  
-    res.status(200).json(registeredUser)
+    res.status(200).json(registeredUser.toObject())
 })
 
 export default authRoutes;
