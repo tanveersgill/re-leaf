@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import service1 from "../assets/service1.png";
-import service2 from "../assets/service2.png";
-import service3 from "../assets/service3.png";
-import service4 from "../assets/service4.png";
+import service1 from "../assets/price-tag.png";
+import service2 from "../assets/coronavirus.png";
+import service3 from "../assets/save.png";
+import service4 from "../assets/map.png";
 
 export default function Services() {
   const data = [
@@ -11,7 +11,7 @@ export default function Services() {
       icon: service1,
       title: "Get Best Prices",
       subTitle:
-        "Pay through our application and save thousands and get amazing rewards.",
+        "Use through our application and save thousands and get amazing rewards.",
     },
     {
       icon: service2,
@@ -21,15 +21,15 @@ export default function Services() {
     },
     {
       icon: service3,
-      title: "Flexible Payment",
+      title: "Environmentally Friendly",
       subTitle:
-        " Enjoy the flexible payment through our app and get rewards on every payment.",
+        " Save the environment by reducing your international carbon footprint while earning points!",
     },
     {
       icon: service4,
       title: "Find The Best Near You",
       subTitle:
-        "Find the best hotels and places to visit near you in a single click.",
+        "Find the best flights, hotels and places to visit near you in a single click.",
     },
   ];
   return (
