@@ -15,7 +15,6 @@ export default function useProfile() {
       const p = await makeAuthenticatedRequest(`/api/profile`, "GET");
       if (p) {
         setProfile(p);
-        console.log(p);
         return;
       }
       const registeredProfile = await makeAuthenticatedRequest(
