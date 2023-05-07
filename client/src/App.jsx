@@ -11,7 +11,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Flight from "./pages/Flight";
 import Accommodation from "./pages/Accommodation";
 import Profile from "./pages/Profile";
-import Activities from "./components/Activities";
+import Activities from "./pages/Activities";
 import Plan from "./components/Plan";
 import Summary from "./components/Summary";
 
@@ -61,7 +61,7 @@ export default function App() {
           <Route path="activities" element={<Activities />} />
           <Route path="summary" element={<Summary />} />
         </Route>
-        <Route path='/profile' element={<Profile />}/>
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   );

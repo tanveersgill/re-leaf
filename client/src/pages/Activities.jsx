@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styled from "styled-components";
 import { AiFillCar } from "react-icons/ai";
-import { IoIosAirplane, IoIosPricetag } from "react-icons/io";
+import { IoIosAirplane } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-
-const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_REACT_APP_GOOGLE_MAPS_API_KEY;
+import useActivities from "../hooks/network/useActivities";
+import Map from "../components/Map";
 
 const Container = styled.div`
   display: flex;
@@ -36,17 +36,6 @@ const SidebarSection = styled.div`
   margin-bottom: 1.5rem;
 `;
 
-const Map = styled.div`
-  width: 70%;
-`;
-
-const StyledAttractionsContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 10px;
-  height: 100vh;
-`;
-
 const SidebarButton = styled.button`
   background-color: #4caf50;
   border: none;
@@ -65,12 +54,6 @@ const SidebarButton = styled.button`
   &:hover {
     background-color: #43a047;
   }
-`;
-
-const StyledIframe = styled.iframe`
-  width: 100%;
-  height: 100vh;
-  border: none;
 `;
 
 const ButtonContainer = styled.div`
@@ -122,65 +105,30 @@ const SavingsSection = styled.div`
 `;
 const Activities = () => {
   const navigate = useNavigate();
+  const [activities] = useActivities();
+
+  const coordinates = useMemo(
+    () =>
+      activities?.map((a) => ({
+        lat: a.location.lat,
+        lng: a.location.lng,
+      })),
+    [activities]
+  );
 
   return (
     <Container>
       <Sidebar>
-        <SidebarSection>
-          <SectionTitle>Best Option</SectionTitle>
-          <InfoRow>
-            <Icon>
-              <IoIosAirplane />
-            </Icon>
-            <InfoContainer>
-              Attraction:{" "}
-              <a href="https://www.united.com/en/ca" target="_blank">
-                {" "}
-                San Fransisco Zoo
-              </a>
-            </InfoContainer>
-          </InfoRow>
-          <InfoRow>
-            <Icon>
-              <AiFillCar />
-            </Icon>
-            <InfoContainer>Environmental Rating: 5/5 </InfoContainer>
-          </InfoRow>
-          <InfoRow>
-            <Icon>
-              <IoIosPricetag />
-            </Icon>
-            <InfoContainer>Price: $20</InfoContainer>
-          </InfoRow>
-        </SidebarSection>
-        <SidebarSection>
-          <SectionTitle>Worst Option</SectionTitle>
-          <InfoRow>
-            <Icon>
-              <IoIosAirplane />
-            </Icon>
-            Attraction:{" "}
-            <a
-              href="https://www.aircanada.com/ca/en/aco/home.html"
-              target="_blank"
-            >
-              {" "}
-              Aquarium of the Bay
-            </a>
-          </InfoRow>
-          <InfoRow>
-            <Icon>
-              <AiFillCar />
-            </Icon>
-            Environmental Rating: 3/5
-          </InfoRow>
-          <InfoRow>
-            <Icon>
-              <IoIosPricetag />
-            </Icon>
-            Price: $30
-          </InfoRow>
-        </SidebarSection>
+        <ActivityInfo
+          title="Best Option"
+          name={activities?.[0]?.name}
+          rating={activities?.[0]?.rating}
+        />
+        <ActivityInfo
+          title="Worst Option"
+          name={activities?.[activities.length - 1]?.name}
+          rating={activities?.[activities.length - 1]?.rating}
+        />
         <SavingsSection>
           <p>
             By choosing the best option, you save <strong>$30</strong> and
@@ -198,19 +146,32 @@ const Activities = () => {
             Back
           </SidebarButton>
           <SidebarButton onClick={() => navigate("/plan/summary")}>
-            Finish
+            Next
           </SidebarButton>
         </ButtonContainer>
       </Sidebar>
-      <Map>
-        <StyledIframe
-          allowFullScreen
-          title="Google Maps"
-          src={`https://www.google.com/maps/embed/v1/search?key=${GOOGLE_MAPS_API_KEY}
-          &q=attractions+in+SanFrancisco+California`}
-        />
-      </Map>
+      {coordinates?.length > 0 && <Map coordinates={coordinates} />}
     </Container>
+  );
+};
+
+const ActivityInfo = ({ title, name, rating }) => {
+  return (
+    <SidebarSection>
+      <SectionTitle>{title}</SectionTitle>
+      <InfoRow>
+        <Icon>
+          <IoIosAirplane />
+        </Icon>
+        <InfoContainer>Attraction:{name}</InfoContainer>
+      </InfoRow>
+      <InfoRow>
+        <Icon>
+          <AiFillCar />
+        </Icon>
+        <InfoContainer>Environmental Rating:{rating}</InfoContainer>
+      </InfoRow>
+    </SidebarSection>
   );
 };
 

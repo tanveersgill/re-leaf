@@ -104,7 +104,7 @@ const SavingsSection = styled.div`
   font-weight: 600;
 `;
 
-const Accomodation = () => {
+const Accommodation = () => {
   const navigate = useNavigate();
   const [accommodations] = useAccommodations();
 
@@ -171,14 +171,8 @@ const HotelInfo = ({ title, name, rating }) => {
         </Icon>
         <InfoContainer>Rating: {rating}</InfoContainer>
       </InfoRow>
-      {/* <InfoRow>
-        <Icon>
-          <IoIosPricetag />
-        </Icon>
-        <InfoContainer>Price: $200 per night</InfoContainer>
-      </InfoRow> */}
     </SidebarSection>
   );
 };
 
-export default Accomodation;
+export default Accommodation;

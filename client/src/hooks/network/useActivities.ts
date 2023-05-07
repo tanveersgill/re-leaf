@@ -2,28 +2,28 @@ import { useEffect, useState } from "react";
 import { useTripBuilder } from "../../context/TripBuilderContext";
 import useAuthenticatedRequest from "./useAuthenticatedRequest";
 
-const useAttractions = () => {
+const useActivities = () => {
   const { trip } = useTripBuilder();
   const { makeAuthenticatedRequest } = useAuthenticatedRequest();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [attractions, setAttractions] = useState([]);
+  const [activities, setActivities] = useState([]);
 
   useEffect(() => {
     void (async () => {
       setIsLoading(true);
 
       const response = await makeAuthenticatedRequest(
-        `/api/activities?location=${trip?.destination}`,
+        `/api/attractions?location=${trip?.destination}`,
         "GET"
       );
 
-      setAttractions(response);
+      setActivities(response);
       setIsLoading(false);
     })();
   }, []);
 
-  return [attractions, isLoading];
+  return [activities, isLoading];
 };
 
-export default useAttractions;
+export default useActivities;
