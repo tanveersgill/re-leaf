@@ -8,7 +8,8 @@ export default function useProfile () {
     const { makeAuthenticatedRequest } = useAuthenticatedRequest();
     const { isAuthenticated, user } = useAuth0();
     // const [ isLoggedIn, setIsLoggedIn ] = useState(isAuthenticated)
-    const [profile, setProfile] = useState({})
+    const [isLoading, setIsLoading] = useState(true)
+    const [profile, setProfile] = useState({username:'loading'})
 
     useEffect(()=>{
         (async () => {
@@ -22,10 +23,10 @@ export default function useProfile () {
             console.log(user)
             const registeredProfile = await makeAuthenticatedRequest(`/api/auth/register`, 'POST')
             setProfile(registeredProfile)
+            setIsLoading(false)
         })()
     }, [user, isAuthenticated])
 
-    return profile;
+    return [isLoading, profile];
     // return [handleProfileChange, profile];
-
 }

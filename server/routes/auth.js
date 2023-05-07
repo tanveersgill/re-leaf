@@ -16,7 +16,7 @@ authRoutes.post('/register', async (req, res) => {
         email: decodedToken.email,
         username: decodedToken.name
     })
-
+ 
     res.status(200).json(registeredUser)
 })
 

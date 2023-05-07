@@ -6,11 +6,8 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { VscChromeClose } from "react-icons/vsc";
 import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
-<<<<<<< HEAD
-import { NavLink } from "react-router-dom";
-=======
+import { NavLink, Link } from "react-router-dom";
 import profilePhoto from "../assets/user.jpg";
->>>>>>> 530bc4085a6308408f9b2f4f2867b6046104198f
 
 export default function Navbar() {
   const { isAuthenticated } = useAuth0();
@@ -47,29 +44,21 @@ export default function Navbar() {
             <a href="#testimonials">Testimonials</a>
           </li>
         </ul>
-<<<<<<< HEAD
-        {isAuthenticated ? 
-          <div class="flex justify-center items-center md:space-x-4">
-            <NavLink to='/profile'>Profile</NavLink>
-            <LogoutButton />
-          </div> : 
-          <LoginButton/>
-        }
-=======
         <ProfileContainer>
           {isAuthenticated ? (
             <>
-              <Profile>
-                <img src={profilePhoto} alt="Profile" />
-                <span>100 Points</span>
-              </Profile>
+              <Link to='/profile'>
+                <Profile>
+                  <img src={profilePhoto} alt="Profile" />
+                  <span>100 Points</span>
+                </Profile>
+              </Link>
               <LogoutButton />
             </>
           ) : (
             <LoginButton />
           )}
         </ProfileContainer>
->>>>>>> 530bc4085a6308408f9b2f4f2867b6046104198f
       </Nav>
       <ResponsiveNav state={navbarState}>
         <ul>

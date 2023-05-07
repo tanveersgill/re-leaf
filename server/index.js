@@ -39,7 +39,10 @@ app.use(router);
 const serverInit = async () => {
   try {
     //only start server on connection to mongodb
-    await mongoose.connect(MONGODB_URI);
+    await mongoose.connect(MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
     console.log("Connected to MongoDB");
     app.listen(port);
     console.log("Server running on port ", port);
