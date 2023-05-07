@@ -9,13 +9,19 @@ const useAuthenticatedRequest = () => {
     method: string,
     body?: any
   ) => {
-    const token = await getAccessTokenSilently();
+    const detailedToken = await getAccessTokenSilently({
+      detailedResponse: true,
+    });
+
     const response = await axios({
       method,
       url,
       data: body,
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${detailedToken.access_token}`,
+      },
+      params: {
+        id_token: detailedToken.id_token,
       },
     });
     return response.data;

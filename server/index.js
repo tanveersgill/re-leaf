@@ -2,13 +2,12 @@ import express from 'express'
 import { auth } from 'express-oauth2-jwt-bearer'
 import dotenv from 'dotenv';
 import mongoose from 'mongoose'
-import User from './database/models/user.js';
-import Trip from './database/models/trip.js'
 
 import attractions from './routes/attractions.js';
 import hotels from './routes/hotels.js';
+import authRoutes from './routes/auth.js'
+import profile from './routes/profile.js'
 import { MONGODB_URI } from './constants.js';
-import flights from './routes/flights.js';
 
 dotenv.config();
 
@@ -16,7 +15,8 @@ const router = express.Router();
 
 router.use('/attractions', attractions);
 router.use('/hotels', hotels)
-router.use('/flights', flights);
+router.use('/auth', authRoutes)
+router.use('/profile', profile)
 
 const port = process.env.PORT || 3000;
 
@@ -43,4 +43,4 @@ const serverInit = async () => {
   }
 }
 
-serverInit();
+serverInit()

@@ -1,16 +1,12 @@
-import express from 'express'
-import jwt_decode from 'jwt-decode'
-import { getUserBySubject } from '../services/mongoService'; 
+import express, {Router} from 'express'
+import { getUserBySubject } from '../services/mongoService.js'
 
-const profile = express.Router();
+const profile = Router()
 
 profile.get('/', async (req, res, next) => {
-    let token = req.get('Authorization').split(' ')[1]
-    let decoded = jwt_decode(token)
-    let subject = decoded.payload.sub
-
-    let user = getUserBySubject(subject);
-    res.status(200).json(user);
+    console.log('getting profile')
+    let subject = req.auth.payload.sub
+    let user = await getUserBySubject(subject);
+    res.status(200).json(user); // sends back null for user not found
 })
-
-export default profile;
+export default profile

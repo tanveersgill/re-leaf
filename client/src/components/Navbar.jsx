@@ -6,6 +6,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { VscChromeClose } from "react-icons/vsc";
 import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   const { isAuthenticated } = useAuth0();
@@ -42,7 +43,13 @@ export default function Navbar() {
             <a href="#testimonials">Testimonials</a>
           </li>
         </ul>
-        {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+        {isAuthenticated ? 
+          <div class="flex justify-center items-center md:space-x-4">
+            <NavLink to='/profile'>Profile</NavLink>
+            <LogoutButton />
+          </div> : 
+          <LoginButton/>
+        }
       </Nav>
       <ResponsiveNav state={navbarState}>
         <ul>
