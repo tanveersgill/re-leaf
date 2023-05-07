@@ -57,34 +57,28 @@ export default function ProfileView(props) {
               $1,000
             </dd>
           </div>
-          <div class="bg-white py-24 sm:py-32">
-            <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl p-8">
-              Trip 1
+          <div class="bg-white py-24 sm:py-10 text-left">
+            <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl p-10">
+              Trip 1: San Francisco
             </dd>
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
               <dl class="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
                 <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-                  <dt class="text-base leading-7 text-gray-600">
-                    Transactions every 24 hours
-                  </dt>
+                  <dt class="text-base leading-7 text-gray-600">$1000</dt>
                   <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
-                    44 million
+                    Cost
                   </dd>
                 </div>
                 <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-                  <dt class="text-base leading-7 text-gray-600">
-                    Assets under holding
-                  </dt>
+                  <dt class="text-base leading-7 text-gray-600">1000 kg</dt>
                   <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
-                    $119 trillion
+                    Carbon Saved
                   </dd>
                 </div>
                 <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-                  <dt class="text-base leading-7 text-gray-600">
-                    New users annually
-                  </dt>
+                  <dt class="text-base leading-7 text-gray-600">1000</dt>
                   <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
-                    46,000
+                    Points Earned
                   </dd>
                 </div>
               </dl>
