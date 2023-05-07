@@ -4,7 +4,18 @@ import { searchFlights } from "../services/flights/flightScraper.js";
 const flights = express.Router();
 
 flights.get("/", async (req, res) => {
-  const flights = await searchFlights("beijing, china", "new york, usa", "2023-06-1", "2023-06-5");
+  const { origin, destination, fromDate, toDate } = req.query;
+
+  if (!destination || !fromDate || !toDate) {
+    return res.status(400).send("Missing query parameters");
+  }
+
+  const flights = await searchFlights(
+    origin || "Toronto, ON",
+    destination,
+    fromDate,
+    toDate
+  );
 
   res.send(flights);
 });

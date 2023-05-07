@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/playwright:v1.33.0-jammy
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+COPY package.json ./
 
 RUN yarn
 
