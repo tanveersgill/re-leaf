@@ -2,13 +2,12 @@ import express from "express";
 import { auth } from "express-oauth2-jwt-bearer";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import User from "./database/models/user.js";
-import Trip from "./database/models/trip.js";
+import bodyParser from "body-parser";
 
 import attractions from "./routes/attractions.js";
 import hotels from "./routes/hotels.js";
-import authRoutes from './routes/auth.js'
-import profile from './routes/profile.js'
+import authRoutes from "./routes/auth.js";
+import profile from "./routes/profile.js";
 import { MONGODB_URI } from "./constants.js";
 import flights from "./routes/flights.js";
 import { cacheMiddleware } from "./middleware/cache.js";
@@ -16,12 +15,13 @@ import { cacheMiddleware } from "./middleware/cache.js";
 dotenv.config();
 
 const router = express.Router();
+router.use(bodyParser.json());
 
 router.use("/attractions", attractions);
 router.use("/hotels", hotels);
 router.use("/flights", cacheMiddleware, flights);
-router.use('/auth', authRoutes)
-router.use('/profile', profile)
+router.use("/auth", authRoutes);
+router.use("/profile", profile);
 
 const port = process.env.PORT || 3000;
 
@@ -41,7 +41,7 @@ const serverInit = async () => {
     //only start server on connection to mongodb
     await mongoose.connect(MONGODB_URI, {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
     });
     console.log("Connected to MongoDB");
     app.listen(port);
@@ -51,4 +51,4 @@ const serverInit = async () => {
   }
 };
 
-serverInit()
+serverInit();

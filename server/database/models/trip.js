@@ -1,7 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import flightSchema from "../schemas/flight.js";
-import attractionSchema from "../schemas/attraction.js";
-import accommodationSchema from "../schemas/accommodation.js";
+import placeSchema from "../schemas/place.js";
 
 const tripSchema = new Schema({
   start_date: {
@@ -17,11 +16,11 @@ const tripSchema = new Schema({
     required: true,
   },
   accommodation: {
-    type: accommodationSchema,
+    type: placeSchema,
     required: true,
   },
   attractions: {
-    type: [attractionSchema],
+    type: [placeSchema],
     required: true,
   },
 });

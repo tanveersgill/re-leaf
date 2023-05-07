@@ -1,16 +1,20 @@
-import mongoose, {Schema} from 'mongoose';
+import {Schema} from 'mongoose';
 
 const flightSchema = new Schema({
-    carrier: {
+    airline: {
         type: String,
         required: true
     },
-    carbonEmission: {
-        type: Number, 
+    cost: {
+        type: String, 
         required: true
     },
-    price: {
-        type: Number, 
+    emissions: {
+        type: String, 
+        required: true
+    },
+    emissionReduction: {
+        type: String,
         required: true
     }
 })

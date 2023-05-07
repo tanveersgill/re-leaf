@@ -1,7 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import { useTripBuilder } from "../context/TripBuilderContext";
+import useProfile from "../hooks/network/useProfile";
 
 export default function Summary() {
   const { trip } = useTripBuilder();
+  const { addTrip } = useProfile();
+  const navigate = useNavigate();
 
   const costDifference =
     (trip?.flights?.[trip?.flights?.length - 1]?.cost
@@ -14,6 +18,24 @@ export default function Summary() {
       "%"
     )?.[0] || 0) -
     (trip?.flights?.[0]?.emissionReduction?.split("%")?.[0] || 0);
+
+  const handleConfirm = () => {
+    (async () => {
+      try {
+        navigate("/");
+
+        await addTrip({
+          start_date: trip?.startDate,
+          end_date: trip?.endDate,
+          flight: trip?.flights?.[0],
+          accommodation: trip?.accommodations[0],
+          attractions: trip?.activities,
+        });
+      } catch (e) {
+        console.error(e);
+      }
+    })();
+  };
 
   return (
     <div>
@@ -179,9 +201,9 @@ export default function Summary() {
               </ul>
             </dd>
             <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <a href="/">
-                <button className="confirmButton">Confirm</button>
-              </a>
+              <button className="confirmButton" onClick={handleConfirm}>
+                Confirm
+              </button>
             </div>
           </div>
         </dl>
