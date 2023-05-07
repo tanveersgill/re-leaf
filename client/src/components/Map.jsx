@@ -38,7 +38,6 @@ const Map = ({ coordinates }) => {
       <GoogleMap mapContainerStyle={containerStyle} onLoad={onLoad} zoom={5}>
         {markers.length &&
           markers.map((marker, i) => {
-            console.log(marker);
             return (
               <div key={i}>
                 <Marker position={marker} />

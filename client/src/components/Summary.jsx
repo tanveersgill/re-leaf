@@ -1,105 +1,131 @@
+import { useTripBuilder } from "../context/TripBuilderContext";
+
 export default function Summary() {
+  const { trip } = useTripBuilder();
+
+  const costDifference =
+    (trip?.flights?.[trip?.flights?.length - 1]?.cost
+      ?.split("$")?.[1]
+      ?.replace(",", "") || 0) -
+    (trip?.flights?.[0]?.cost?.split("$")?.[1].replace(",", "") || 0);
+
+  const emissionsDifference =
+    (trip?.flights?.[trip?.flights?.length - 1]?.emissionReduction?.split(
+      "%"
+    )?.[0] || 0) -
+    (trip?.flights?.[0]?.emissionReduction?.split("%")?.[0] || 0);
+
   return (
     <div>
-      <div class="px-4 sm:px-0">
-        <h3 class="text-base font-semibold leading-7 text-green-900">
+      <div className="px-4 sm:px-0">
+        <h3 className="text-base font-semibold leading-7 text-green-900">
           Personal Travel Summary
         </h3>
-        <p class="mt-1 max-w-2xl text-sm leading-6 text-green-500">
+        <p className="mt-1 max-w-2xl text-sm leading-6 text-green-500">
           Enjoy your trip!
         </p>
       </div>
-      <div class="mt-6 border-t border-green-100">
-        <dl class="divide-y divide-green-100">
-          <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt class="text-sm font-medium leading-6 text-green-900">
+      <div className="mt-6 border-t border-green-100">
+        <dl className="divide-y divide-green-100">
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="text-sm font-medium leading-6 text-green-900">
               Destination
             </dt>
-            <dd class="mt-1 text-sm leading-6 text-green-700 sm:col-span-2 sm:mt-0">
-              San Francisco
+            <dd className="mt-1 text-sm leading-6 text-green-700 sm:col-span-2 sm:mt-0">
+              {trip?.destination}
             </dd>
           </div>
-          <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt class="text-sm font-medium leading-6 text-green-900">Origin</dt>
-            <dd class="mt-1 text-sm leading-6 text-green-700 sm:col-span-2 sm:mt-0">
-              Toronto
-            </dd>
-          </div>
-          <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt class="text-sm font-medium leading-6 text-green-900">Flight</dt>
-            <dd class="mt-1 text-sm leading-6 text-green-700 sm:col-span-2 sm:mt-0">
-              Air Canada
-            </dd>
-          </div>
-          <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt class="text-sm font-medium leading-6 text-green-900">
-              Accomodation
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="text-sm font-medium leading-6 text-green-900">
+              Origin
             </dt>
-            <dd class="mt-1 text-sm leading-6 text-green-700 sm:col-span-2 sm:mt-0">
-              Marriot Hotel
+            <dd className="mt-1 text-sm leading-6 text-green-700 sm:col-span-2 sm:mt-0">
+              {trip?.origin}
             </dd>
           </div>
-          <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt class="text-sm font-medium leading-6 text-green-900">
-              Activity
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="text-sm font-medium leading-6 text-green-900">
+              Flight
             </dt>
-            <dd class="mt-1 text-sm leading-6 text-green-700 sm:col-span-2 sm:mt-0">
-              San Francisco Zoo
+            <dd className="mt-1 text-sm leading-6 text-green-700 sm:col-span-2 sm:mt-0">
+              {trip?.flights[0]?.airline}
             </dd>
           </div>
-          <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt class="text-sm font-medium leading-6 text-green-900">
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="text-sm font-medium leading-6 text-green-900">
+              Accommodation
+            </dt>
+            <dd className="mt-1 text-sm leading-6 text-green-700 sm:col-span-2 sm:mt-0">
+              {trip?.accommodations[0]?.name}
+            </dd>
+          </div>
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="text-sm font-medium leading-6 text-green-900">
+              Activities
+            </dt>
+            <dd className="mt-1 text-sm leading-6 text-green-700 sm:col-span-2 sm:mt-0">
+              <ul>
+                {trip?.activities?.map((act) => {
+                  return <li key={act.address}>{act?.name}</li>;
+                })}
+              </ul>
+            </dd>
+          </div>
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="text-sm font-medium leading-6 text-green-900">
               Total Price
             </dt>
-            <dd class="mt-1 text-sm leading-6 text-green-700 sm:col-span-2 sm:mt-0">
-              $2000
+            <dd className="mt-1 text-sm leading-6 text-green-700 sm:col-span-2 sm:mt-0">
+              {trip?.flights[0].cost}
             </dd>
           </div>
-          <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt class="text-sm font-medium leading-6 text-green-900">
-              Total Price Saved
-            </dt>
-            <dd class="mt-1 text-sm leading-6 text-green-700 sm:col-span-2 sm:mt-0">
-              $500
-            </dd>
-          </div>
-          <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt class="text-sm font-medium leading-6 text-green-900">
+          {costDifference > 0 && (
+            <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+              <dt className="text-sm font-medium leading-6 text-green-900">
+                Total Price Saved
+              </dt>
+              <dd className="mt-1 text-sm leading-6 text-green-700 sm:col-span-2 sm:mt-0">
+                ${costDifference}
+              </dd>
+            </div>
+          )}
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="text-sm font-medium leading-6 text-green-900">
               Total Emissions
             </dt>
-            <dd class="mt-1 text-sm leading-6 text-green-700 sm:col-span-2 sm:mt-0">
-              1000 kg
+            <dd className="mt-1 text-sm leading-6 text-green-700 sm:col-span-2 sm:mt-0">
+              {trip?.flights[0].emissions}
             </dd>
           </div>
-          <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt class="text-sm font-medium leading-6 text-green-900">
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="text-sm font-medium leading-6 text-green-900">
               Total Emissions Saved
             </dt>
-            <dd class="mt-1 text-sm leading-6 text-green-700 sm:col-span-2 sm:mt-0">
-              200 kg
+            <dd className="mt-1 text-sm leading-6 text-green-700 sm:col-span-2 sm:mt-0">
+              {emissionsDifference}kg
             </dd>
           </div>
-          <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt class="text-sm font-medium leading-6 text-green-900">
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="text-sm font-medium leading-6 text-green-900">
               Points Earned
             </dt>
-            <dd class="mt-1 text-sm leading-6 text-green-700 sm:col-span-2 sm:mt-0">
-              100
+            <dd className="mt-1 text-sm leading-6 text-green-700 sm:col-span-2 sm:mt-0">
+              {emissionsDifference * 10}
             </dd>
           </div>
-          <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt class="text-sm font-medium leading-6 text-green-900">
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="text-sm font-medium leading-6 text-green-900">
               Attachments
             </dt>
-            <dd class="mt-2 text-sm text-green-900 sm:col-span-2 sm:mt-0">
+            <dd className="mt-2 text-sm text-green-900 sm:col-span-2 sm:mt-0">
               <ul
                 role="list"
-                class="divide-y divide-green-100 rounded-md border border-green-200"
+                className="divide-y divide-green-100 rounded-md border border-green-200"
               >
-                <li class="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
-                  <div class="flex w-0 flex-1 items-center">
+                <li className="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
+                  <div className="flex w-0 flex-1 items-center">
                     <svg
-                      class="h-5 w-5 flex-shrink-0 text-green-400"
+                      className="h-5 w-5 flex-shrink-0 text-green-400"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       aria-hidden="true"
@@ -110,23 +136,23 @@ export default function Summary() {
                         clip-rule="evenodd"
                       ></path>
                     </svg>
-                    <span class="ml-2 flex-1 w-0 truncate">
+                    <span className="ml-2 flex-1 w-0 truncate">
                       Travel Itinerary.pdf
                     </span>
                   </div>
-                  <div class="flex-shrink-0 ml-4">
+                  <div className="flex-shrink-0 ml-4">
                     <a
                       href="#"
-                      class="font-medium text-green-900 hover:text-green-700"
+                      className="font-medium text-green-900 hover:text-green-700"
                     >
                       Download
                     </a>
                   </div>
                 </li>
-                <li class="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
-                  <div class="flex w-0 flex-1 items-center">
+                <li className="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
+                  <div className="flex w-0 flex-1 items-center">
                     <svg
-                      class="h-5 w-5 flex-shrink-0 text-green-400"
+                      className="h-5 w-5 flex-shrink-0 text-green-400"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       aria-hidden="true"
@@ -137,14 +163,14 @@ export default function Summary() {
                         clip-rule="evenodd"
                       ></path>
                     </svg>
-                    <span class="ml-2 flex-1 w-0 truncate">
+                    <span className="ml-2 flex-1 w-0 truncate">
                       Hotel Reservation.pdf
                     </span>
                   </div>
-                  <div class="flex-shrink-0 ml-4">
+                  <div className="flex-shrink-0 ml-4">
                     <a
                       href="#"
-                      class="font-medium text-green-900 hover:text-green-700"
+                      className="font-medium text-green-900 hover:text-green-700"
                     >
                       Download
                     </a>
@@ -152,7 +178,7 @@ export default function Summary() {
                 </li>
               </ul>
             </dd>
-            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
               <a href="/">
                 <button className="confirmButton">Confirm</button>
               </a>

@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       clientId={import.meta.env.VITE_APP_AUTH0_CLIENT_ID}
       authorizationParams={{
         audience: import.meta.env.VITE_APP_AUTH0_AUDIENCE,
-        scope: "read:current_user",
+        scope: "read:current_user email profile openid",
         redirect_uri: window.location.origin,
       }}
     >

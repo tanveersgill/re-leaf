@@ -121,30 +121,25 @@ const Flight = () => {
 
   const [flights] = useFlights();
 
-  const sortedFlights = flights.sort(
-    (a, b) =>
-      a.emissionReduction.split("%")[0] - b.emissionReduction.split("%")[0]
-  );
-
   const costDifference =
-    (sortedFlights?.[sortedFlights?.length - 1]?.cost
+    (flights?.[flights?.length - 1]?.cost
       ?.split("$")?.[1]
       ?.replace(",", "") || 0) -
-    (sortedFlights?.[0]?.cost?.split("$")?.[1].replace(",", "") || 0);
+    (flights?.[0]?.cost?.split("$")?.[1].replace(",", "") || 0);
 
   const emissionsDifference =
-    (sortedFlights?.[sortedFlights?.length - 1]?.emissionReduction?.split(
+    (flights?.[flights?.length - 1]?.emissionReduction?.split(
       "%"
     )?.[0] || 0) -
-    (sortedFlights?.[0]?.emissionReduction?.split("%")?.[0] || 0);
+    (flights?.[0]?.emissionReduction?.split("%")?.[0] || 0);
 
   return (
     <Container>
       <Sidebar>
-        <FlightSummary title="Best Option" flight={sortedFlights[0]} />
+        <FlightSummary title="Best Option" flight={flights[0]} />
         <FlightSummary
           title="Worst Option"
-          flight={sortedFlights[sortedFlights.length - 1]}
+          flight={flights[flights.length - 1]}
         />
         <SavingsSection>
           {costDifference > 0 ? (

@@ -3,11 +3,10 @@ import { useTripBuilder } from "../../context/TripBuilderContext";
 import useAuthenticatedRequest from "./useAuthenticatedRequest";
 
 const useAccommodations = () => {
-  const { trip } = useTripBuilder();
+  const { trip, setTrip } = useTripBuilder();
   const { makeAuthenticatedRequest } = useAuthenticatedRequest();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [accommodations, setAccommodations] = useState([]);
 
   useEffect(() => {
     void (async () => {
@@ -18,12 +17,12 @@ const useAccommodations = () => {
         "GET"
       );
 
-      setAccommodations(response);
+      trip && setTrip && setTrip({ ...trip, accommodations: response });
       setIsLoading(false);
     })();
   }, []);
 
-  return [accommodations, isLoading];
+  return [trip?.accommodations, isLoading];
 };
 
 export default useAccommodations;

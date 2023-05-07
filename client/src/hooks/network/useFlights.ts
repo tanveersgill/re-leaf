@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
-import { useTripBuilder } from "../../context/TripBuilderContext";
+import { Flight, useTripBuilder } from "../../context/TripBuilderContext";
 import useAuthenticatedRequest from "./useAuthenticatedRequest";
 
 const useFlights = () => {
-  const { trip } = useTripBuilder();
+  const { trip, setTrip } = useTripBuilder();
   const { makeAuthenticatedRequest } = useAuthenticatedRequest();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [flights, setFlights] = useState([]);
 
   useEffect(() => {
     void (async () => {
@@ -18,12 +17,18 @@ const useFlights = () => {
         "GET"
       );
 
-      setFlights(response);
+      const sortedFlights = response.sort(
+        (a: Flight, b: Flight) =>
+          Number(a.emissionReduction.split("%")[0]) -
+          Number(b.emissionReduction.split("%")[0])
+      );
+
+      trip && setTrip && setTrip({ ...trip, flights: sortedFlights });
       setIsLoading(false);
     })();
   }, []);
 
-  return [flights, isLoading];
+  return [trip?.flights, isLoading];
 };
 
 export default useFlights;
