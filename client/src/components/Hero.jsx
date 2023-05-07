@@ -91,7 +91,6 @@ const Section = styled.section`
   margin-top: 2rem;
   width: 100%;
   height: 100%;
-
   .background {
     height: 100%;
     img {
@@ -147,7 +146,6 @@ const Section = styled.section`
           &[type="date"] {
             padding-left: 3rem;
           }
-
           &::placeholder {
             color: black;
           }
