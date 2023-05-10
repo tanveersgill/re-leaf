@@ -6,7 +6,7 @@ ReLeaf is a sustainable travel platform that aims to help travellers reduce thei
 
 ## 🏆 Awards
 
-**🌱 Best Sustainability Hack** sponsored by Avanade at MetHacks 2023🌱
+**🌱 Best Sustainability Hack** sponsored by Avanade at MetHacks 2023 🌱
 
 Check out our [MetHacks 2023 Devpost submission](https://devpost.com/software/re-leaf-iu2cje?ref_content=user-portfolio&ref_feature=in_progress) for more details on the project!
 
